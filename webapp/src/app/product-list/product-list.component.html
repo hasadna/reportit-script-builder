@@ -1,0 +1,30 @@
+<h2>Chat</h2>
+
+<div *ngFor="let message of messages">
+  <p *ngIf="!message.isPerson">
+    Chatbot: {{ message.contents }}
+  </p>
+  <p *ngIf="message.isPerson">
+    Person: {{ message.contents }}
+  </p>
+
+   <app-text-block></app-text-block>
+</div>
+
+<!-- <div *ngFor="let product of products">
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+ 
+  <button (click)="share()">
+    Share
+  </button>
+
+</div> -->
