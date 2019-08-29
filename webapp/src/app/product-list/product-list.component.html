@@ -1,14 +1,7 @@
 <h2>Chat</h2>
 
-<div *ngFor="let message of messages">
-  <p *ngIf="!message.isPerson">
-    Chatbot: {{ message.contents }}
-  </p>
-  <p *ngIf="message.isPerson">
-    Person: {{ message.contents }}
-  </p>
-
-   <app-text-block></app-text-block>
+<div *ngFor="let data of getDataList()">
+   <app-text-block [data]="data" (outputEmitter)="getData()"></app-text-block>
 </div>
 
 <!-- <div *ngFor="let product of products">

@@ -1,0 +1,76 @@
+TODO: https://etherpad.net/p/VBvsA8XsHT
+Next steps:
+1. Save text block using this data
+Continue with emitter.
+
+2. Add more blocks
+
+
+[ Text editor (typescript) | UI editor ]
+
+
+For example:       //ifEmployment(this.getCompanyName())
+
+Sketch of mechanism:
+dropdown: [text-block, text-input-block, date-block]
+[add button]
+
+-------------------------------
+
+Chat editor:
+
+[text-block]
+  [description]
+  [block_id]
+  [remove block button]
+
+[text-input-block]
+  [description]
+  [block_id]
+  [text_field_id]
+  [validation dropdown][email]
+  [remove block button]
+
+[date-block]
+  [description]
+  [block_id]
+  [date_field_id]
+  [validation dropdown][greater than][greater or equal to]
+    [greater than]
+    [date_field, e.g 1-1-2019]]
+  [remove block button]
+
+
+
+
+[greetUser] [remove button]
+[greetUser] [remove button]
+[reportCase] [remove button]
+[ifReportCase], dropdown: [*Police*, Employment...]
+  dropdown: [greetUser, reportCase, caseDate, companyName, ifStatement]
+  [add button]
+  [greetUser] [remove button]
+
+
+this.greetUser();
+this.greetUser();
+this.getReportCase();
+ifReportCase(ReportCase.Police, [this.greetUser()]);
+
+
+Problem: From code string to UI
+
+
+    
+    
+    this.greetUser()
+    this.getReportCase();
+    this.getCaseDate();
+    if (this.chatData.reportCase == ReportCase.Employment) {
+      //ifEmployment(this.getCompanyName())
+      this.getCompanyName();
+    }
+} 
+
+this.getCaseDescription();
+

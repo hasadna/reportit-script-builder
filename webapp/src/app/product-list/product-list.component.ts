@@ -20,6 +20,27 @@ export class ProductListComponent {
   share() {
     window.alert('The product has been shared!');
   }
+
+  getDataList() {
+    const map1 = new Map();
+    map1.set('text', "Bla1");
+    const map2 = new Map();
+    map2.set('text', "Bla2");
+    
+    let dataList: Array<Map<string, string>> = [];
+    dataList.push(map1);
+    dataList.push(map2);
+    return dataList;
+  }
+
+  getData(event) {
+    console.log("Bla");
+    console.log(event);
+
+  
+    // TODO: Iterate over all blocks and save them to a list
+    // Question: How to access blocks
+  }
 }
 
 
