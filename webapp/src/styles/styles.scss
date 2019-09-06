@@ -1,0 +1,13 @@
+@import './material';
+@import './global-styles';
+@import './notification';
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  body {
+    margin: 0;
+    font-family: Arial;
+    background-color: #f4f4f4;
+  }
+}

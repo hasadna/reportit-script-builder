@@ -1,0 +1,28 @@
+<div class="page">
+  <div class="title">
+    <span>Chat bot editor</span><a [routerLink]="'/json'">JSON</a>
+  </div>
+
+  <!-- Blocks -->
+  <div class="blocks">
+    <app-block *ngFor="let block of blockList" [block]="block"></app-block>
+  </div>
+
+  <!-- Button to add new block -->
+  <mat-card class="new-block app-block">
+    <div class="title">New block</div>
+    <div class="select">
+      <mat-form-field>
+        <mat-label>Block Type</mat-label>
+        <mat-select [(value)]="blockTypeSelected">
+          <mat-option *ngFor="let blockSelect of blockSelectList" [value]="blockSelect.type">
+            {{ blockSelect.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="button">
+      <button mat-flat-button color="primary" (click)="addBlock()">ADD</button>
+    </div>
+  </mat-card>
+</div>
