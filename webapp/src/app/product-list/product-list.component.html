@@ -1,7 +1,7 @@
 <h2>Chat</h2>
 
-<div *ngFor="let data of getDataList()">
-   <app-text-block [data]="data" (outputEmitter)="getData()"></app-text-block>
+<div *ngFor="let data of initialDataList">
+   <app-text-block [data]="data" (outputEmitter)="getData($event)"></app-text-block>
 </div>
 
 <!-- <div *ngFor="let product of products">

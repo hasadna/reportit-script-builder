@@ -1,9 +1,99 @@
 TODO: https://etherpad.net/p/VBvsA8XsHT
-Next steps:
-1. Save text block using this data
-Continue with emitter.
 
-2. Add more blocks
+Next steps:
+1. Add text-input-block
+2. Add date-block
+3. [History] Add storage locations
+   - Create DB structure and functions to work with it
+4. [History] Show list of waypoints
+5. [History] Show waypoint preview
+   - Choose between json or read-only preview
+6. [History] Add restore, delete buttons
+
+Blocks:
+text-block [DONE]
+Param: chatbot text
+
+text-input-block
+Param: ID for storing person input
+Chatbot displays a textarea (we don't)
+Validation: text_min_length, text_max_length
+Example 1:
+ID: [person_name]
+text_max_length: 500
+
+Example json:
+text-input-block {
+  id: person_name,
+  validations {
+    text_max_length: 500
+  }
+}
+
+Example 2:
+ID: [case_description]
+text_min_length: 100
+text_max_length: 2000
+
+Example json:
+text-input-block {
+  id: case_description,
+  validations {
+    text_min_length: 100,
+    text_max_length: 2000
+  }
+}
+
+date-block
+Param: ID for storing person input
+Chatbot displays a datepicker (we don't)
+Examples:
+ID: [case_date]
+
+
+Share a session of chatbot editor:
+- Google doc single document style 
+  - Storage locations:
+    - Live data: stored all the time
+    - List of history waypoints: stored every x minutes
+
+  - History preview
+    - No diff view (too much work)  
+    - How is looks (options):
+      - Read-only json view - diffable as text in another app
+      - Read-only View of app - easier to read, more work
+    - Delete waypoint
+    - Restore waypoint
+
+Validations:
+- Create list of Validations
+- Define which blocks can have each validation
+- Allow the user to add validations to blocks
+
+Valid phone number
+Valid email
+Valid date
+Valid date before/after/between
+Valid time
+Valid non-empty response
+Valid text length (min, max)
+
+
+
+Ofer TODO:
+- Check DB type (Firestore, other DB)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [ Text editor (typescript) | UI editor ]
@@ -74,3 +164,19 @@ Problem: From code string to UI
 
 this.getCaseDescription();
 
+Draft:
+- Save all the time with session ID
+- Save with button for main storage
+- Branch model with master - merge overrides.
+- Cancel button - move from main storage to session
+- New session starts when you open it
+- Place to see sessions (if you didn't store the link you lose it)
+- Another option: only 1 session (like Google Doc)
+- Another option: Session is username
+- Check: Do we need more than 1 session?
+Nice to have: Problem: how to undo?
+- Store change points at different times/triggers
+- Alternative: Allow user to store dataList string.
+
+app -> json -> git
+json -/> app

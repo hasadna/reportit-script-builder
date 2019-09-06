@@ -4,6 +4,28 @@ import { products } from '../products';
 import { Greeter } from '../Greeter';
 import { Person } from '../Person';
 import { Chatbot } from '../Chatbot';
+import { BlockingProxy } from 'blocking-proxy';
+import { Button } from 'protractor';
+import { triggerAsyncId } from 'async_hooks';
+import { read } from 'fs';
+
+export interface BaseBlockData {
+  id: string;
+}
+
+// text-block
+export interface TextData extends BaseBlockData {
+  text: string;
+}
+
+// date-block
+export interface DateData extends BaseBlockData {
+  date: Date;
+}
+
+interface DataList {
+  [id: string]: TextData;
+}
 
 @Component({
   selector: 'app-product-list',
@@ -16,36 +38,31 @@ export class ProductListComponent {
   person = new Person();
   chatbot = new Chatbot(this.person);
   messages = this.chatbot.run();
-
+  initialDataList: TextData[] = this.getDataList();
+  dataList: DataList;
+  
   share() {
     window.alert('The product has been shared!');
   }
 
-  getDataList() {
-    const map1 = new Map();
-    map1.set('text', "Bla1");
-    const map2 = new Map();
-    map2.set('text', "Bla2");
-    
-    let dataList: Array<Map<string, string>> = [];
-    dataList.push(map1);
-    dataList.push(map2);
-    return dataList;
+  getDataList(): TextData[] {
+    const map1: TextData = {
+      // TODO: add autogeneration
+      id: '1',
+      text: 'Blah1',
+    };
+    const map2: TextData = {
+      id: '2',
+      text: 'Second Text Block',
+    };
+
+    this.dataList = {};
+    this.dataList[map1.id] = map1;
+    this.dataList[map2.id] = map2;
+    return Object.values(this.dataList);
   }
 
-  getData(event) {
-    console.log("Bla");
-    console.log(event);
-
-  
-    // TODO: Iterate over all blocks and save them to a list
-    // Question: How to access blocks
+  getData(data): void {
+    this.dataList[data.id] = data;
   }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
