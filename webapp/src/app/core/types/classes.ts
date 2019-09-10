@@ -2,7 +2,7 @@ import { BlockType } from './enum';
 
 export class BlockData {
   id: string;
-  name: string;
+  variableId: string;
   text: string;
   date: Date;
   type: BlockType;

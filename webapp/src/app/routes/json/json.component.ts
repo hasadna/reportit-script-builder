@@ -27,7 +27,8 @@ export class JsonComponent {
         const newBlock = new BlockData(block.id, block.type);
         newBlock.text = block.text;
         newBlock.date = block.date;
-        newBlock.name = block.name;
+        newBlock.variableId = block.variableId;
+        // TODO: can we assign? If not, make this a method of BlockData.
         blockMap[block.id] = newBlock;
       }
       this.blockService.blockMap = blockMap;
@@ -39,6 +40,7 @@ export class JsonComponent {
 
   // Converts service data to JSON
   toJSON(): void {
+    // TODO: Add order here too when adding BlockData.order
     this.json = JSON.stringify(Object.values(this.blockService.blockMap));
   }
 }

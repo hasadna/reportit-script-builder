@@ -28,12 +28,13 @@ export class EditorComponent implements OnDestroy {
   }
 
   updateBlockList(): void {
+    // TODO: Add BlockData.order and sort by it in a new service.
     this.blockList = Object.values(this.blockService.blockMap);
   }
 
   addBlock(): void {
     const newBlock = new BlockData(randstr64(10), this.blockTypeSelected);
-    newBlock.name = 'Block #' + randCustomString(numerals, 4);
+    newBlock.variableId = randCustomString(numerals, 4);
     this.blockService.blockMap[newBlock.id] = newBlock;
     this.updateBlockList();
   }

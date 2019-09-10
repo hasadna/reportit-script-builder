@@ -16,9 +16,9 @@ export class DateInputBlockComponent implements OnInit {
   constructor(private blockService: BlockService) { }
 
   ngOnInit() {
-    this.input.setValue(this.block.name, { emitEvent: false });
+    this.input.setValue(this.block.variableId, { emitEvent: false });
     this.input.valueChanges.subscribe(text => {
-      this.block.name = text;
+      this.block.variableId = text;
       this.blockService.updateBlock(this.block);
     });
   }
