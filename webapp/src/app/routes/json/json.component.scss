@@ -1,0 +1,20 @@
+.page {
+  padding: 20px;
+  >.title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    opacity: 0.6;
+    color: black;
+  }
+  >.editor {
+    textarea {
+      width: 400px;
+    }
+  }
+  >.buttons {
+    margin-top: 10px;
+    button {
+      margin-right: 10px;
+    }
+  }
+}

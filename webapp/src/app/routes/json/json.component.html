@@ -1,0 +1,16 @@
+<div class="page">
+  <div class="title">
+    <a [routerLink]="'/'">Back</a>
+  </div>
+  <div class="editor">
+    <textarea
+      matTextareaAutosize
+      matAutosizeMinRows="3"
+      [(ngModel)]="json"
+    ></textarea>
+  </div>
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="fromJSON()">Save</button>
+    <button mat-flat-button (click)="toJSON()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.page {
+  padding: 20px;
+  >.title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    opacity: 0.6;
+    color: black;
+    >a {
+      margin-left: 10px;
+    }
+  }
+  >.new-block {
+    >.select {
+      margin-top: 15px;
+    }
+    >.button {
+      margin-top: 10px;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
