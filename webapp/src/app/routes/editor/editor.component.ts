@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { randstr64, randCustomString, numerals } from 'rndmjs';
 
 import { BlockData, BlockSelect, BlockType } from '@/core/types';
 import { BlockService } from '@/core/services';
@@ -28,14 +27,11 @@ export class EditorComponent implements OnDestroy {
   }
 
   updateBlockList(): void {
-    // TODO: Add BlockData.order and sort by it in a new service.
-    this.blockList = Object.values(this.blockService.blockMap);
+    this.blockList = this.blockService.getBlockList();
   }
 
   addBlock(): void {
-    const newBlock = new BlockData(randstr64(10), this.blockTypeSelected);
-    newBlock.variableId = randCustomString(numerals, 4);
-    this.blockService.blockMap[newBlock.id] = newBlock;
+    this.blockService.addBlock(this.blockTypeSelected);
     this.updateBlockList();
   }
 
