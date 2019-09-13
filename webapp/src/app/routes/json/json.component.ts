@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BlockDataMap, BlockData, BlockDataJSON } from '@/core/types';
+import { BlockDataMap, BlockData } from '@/core/types';
 import { BlockService, NotificationService } from '@/core/services';
 
 @Component({
@@ -22,7 +22,8 @@ export class JsonComponent {
   fromJSON(): void {
     const blockMap: BlockDataMap = {};
     try {
-      const blockList: BlockDataJSON[] = JSON.parse(this.json);
+      // BlockData from JSON.parse doesn't have any method
+      const blockList: BlockData[] = JSON.parse(this.json);
       for (const block of blockList) {
         blockMap[block.id] = BlockData.fromObject(block);
       }

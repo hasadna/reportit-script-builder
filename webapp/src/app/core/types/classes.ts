@@ -1,15 +1,6 @@
 import { BlockType } from './enum';
 
-export interface BlockDataJSON {
-  id: string;
-  variableId: string;
-  text: string;
-  date: Date;
-  type: BlockType;
-  order: number;
-}
-
-export class BlockData implements BlockDataJSON {
+export class BlockData {
   id: string;
   variableId: string;
   text: string;
@@ -34,7 +25,7 @@ export class BlockData implements BlockDataJSON {
     return this.type === BlockType.Input;
   }
 
-  static fromObject(block: BlockDataJSON): BlockData {
+  static fromObject(block: BlockData): BlockData {
     const newBlock = new BlockData(block.id, block.type);
     return Object.assign(newBlock, block);
   }
