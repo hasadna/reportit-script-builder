@@ -8,8 +8,6 @@ import { BlockData, BlockDataMap, BlockType } from '@/core/types';
 export class BlockService {
   blockMap: BlockDataMap = {};
   refreshChanges = new Subject<void>();
-  // Used for BlockData.order
-  private blockCount: number = 0;
 
   updateBlock(block: BlockData): void {
     this.blockMap[block.id] = block;
@@ -22,7 +20,7 @@ export class BlockService {
 
   addBlock(blockType: BlockType): void {
     const newBlock = new BlockData(randstr64(10), blockType);
-    newBlock.order = this.blockCount++;
+    newBlock.order = Object.values(this.blockMap).length;
     newBlock.variableId = randCustomString(numerals, 4);
     this.blockMap[newBlock.id] = newBlock;
   }
