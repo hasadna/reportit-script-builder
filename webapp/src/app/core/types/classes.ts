@@ -6,6 +6,7 @@ export class BlockData {
   text: string;
   date: Date;
   type: BlockType;
+  order: number;
 
   constructor(id: string, type: BlockType) {
     this.id = id;
@@ -22,5 +23,10 @@ export class BlockData {
 
   isInputBlock(): boolean {
     return this.type === BlockType.Input;
+  }
+
+  static fromObject(block: BlockData): BlockData {
+    const newBlock = new BlockData(block.id, block.type);
+    return Object.assign(newBlock, block);
   }
 }
