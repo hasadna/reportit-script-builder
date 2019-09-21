@@ -1,6 +1,37 @@
 .component {
   position: relative;
   margin-bottom: 10px;
+  >.validation {
+    margin-top: 10px;
+    >.validation-button {
+      display: flex;
+      justify-content: flex-end;
+      >.open-button {
+        padding: 2px 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 80px;
+        user-select: none;
+        span {
+          font-size: 14px;
+        }
+        mat-icon {
+          font-size: 16px;
+          line-height: normal;
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+    .validation-settings {
+      display: flex;
+      flex-direction: column;
+      mat-checkbox {
+        font-size: 14px;
+      }
+    }
+  }
   >.delete {
     position: absolute;
     top: 0;

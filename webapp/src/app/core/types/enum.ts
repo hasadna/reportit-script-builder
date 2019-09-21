@@ -3,3 +3,11 @@ export enum  BlockType {
   Date,
   Input,
 }
+
+export enum  BlockValidation {
+  NoEmptyAnswer,
+  PhoneNumber,
+  EmailAddress,
+  Date,
+  Hour,
+}

@@ -7,6 +7,7 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCardModule,
+  MatCheckboxModule,
 } from '@angular/material';
 
 const MaterialImports = [
@@ -17,6 +18,7 @@ const MaterialImports = [
   MatSelectModule,
   MatInputModule,
   MatCardModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({

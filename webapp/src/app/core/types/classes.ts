@@ -1,4 +1,4 @@
-import { BlockType } from './enum';
+import { BlockType, BlockValidation } from './enum';
 
 export class BlockData {
   id: string;
@@ -7,6 +7,7 @@ export class BlockData {
   date: Date;
   type: BlockType;
   order: number;
+  validations: BlockValidation[] = [];
 
   constructor(id: string, type: BlockType) {
     this.id = id;
@@ -23,6 +24,23 @@ export class BlockData {
 
   isInputBlock(): boolean {
     return this.type === BlockType.Input;
+  }
+
+  check(validation: BlockValidation, isChecked: boolean): void {
+    if (isChecked) {
+      if (!this.validations.includes(validation)) {
+        this.validations.push(validation);
+      }
+    } else {
+      const index: number = this.validations.indexOf(validation);
+      if (index !== -1) {
+        this.validations.splice(index, 1);
+      }
+    }
+  }
+
+  isChecked(validation: BlockValidation): boolean {
+    return this.validations.includes(validation);
   }
 
   static fromObject(block: BlockData): BlockData {
