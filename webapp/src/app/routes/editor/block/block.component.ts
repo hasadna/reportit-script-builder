@@ -21,6 +21,9 @@ export class BlockComponent implements OnInit {
   constructor(public blockService: BlockService) { }
 
   ngOnInit() {
+    if (this.block.validations.length > 0) {
+      this.isValidationOpen = true;
+    }
     this.initValidation();
   }
 
