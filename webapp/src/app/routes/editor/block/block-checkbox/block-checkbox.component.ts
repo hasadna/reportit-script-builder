@@ -14,12 +14,12 @@ export class BlockCheckboxComponent implements OnInit {
 
   constructor() {
     this.checkbox.valueChanges.subscribe(isChecked => {
-      this.block.check(this.validation, isChecked);
+      this.block.setIsChecked(this.validation, isChecked);
     });
   }
 
   ngOnInit() {
-    if (this.block.isChecked(this.validation)) {
+    if (this.block.getIsChecked(this.validation)) {
       this.checkbox.setValue(true, { emitEvent: false });
     }
   }

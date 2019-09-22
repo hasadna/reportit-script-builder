@@ -27,28 +27,28 @@ export class BlockComponent implements OnInit {
   initValidation(): void {
     this.checkboxes.push({
       label: 'Verify no empty answer',
-      validation: BlockValidation.NoEmptyAnswer
+      validation: BlockValidation.NoEmptyAnswer,
     });
     if (this.block.isInputBlock()) {
       // Input validation only
       this.checkboxes.push({
         label: "Verify it's a valid email address",
-        validation: BlockValidation.EmailAddress
+        validation: BlockValidation.EmailAddress,
       });
       this.checkboxes.push({
         label: "Verify it's a valid phone number",
-        validation: BlockValidation.PhoneNumber
+        validation: BlockValidation.PhoneNumber,
       });
     }
     if (this.block.isDateBlock()) {
       // Date validation only
       this.checkboxes.push({
         label: "Verify it's a valid date",
-        validation: BlockValidation.Date
+        validation: BlockValidation.Date,
       });
       this.checkboxes.push({
         label: "Verify it's a valid hour",
-        validation: BlockValidation.Hour
+        validation: BlockValidation.Hour,
       });
     }
   }

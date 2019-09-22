@@ -26,7 +26,7 @@ export class BlockData {
     return this.type === BlockType.Input;
   }
 
-  check(validation: BlockValidation, isChecked: boolean): void {
+  setIsChecked(validation: BlockValidation, isChecked: boolean): void {
     if (isChecked) {
       if (!this.validations.includes(validation)) {
         this.validations.push(validation);
@@ -39,7 +39,7 @@ export class BlockData {
     }
   }
 
-  isChecked(validation: BlockValidation): boolean {
+  getIsChecked(validation: BlockValidation): boolean {
     return this.validations.includes(validation);
   }
 
