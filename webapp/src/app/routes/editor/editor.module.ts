@@ -5,7 +5,7 @@ import { EditorComponent } from './editor.component';
 import { TextBlockComponent } from './text-block';
 import { DateInputBlockComponent } from './date-input-block';
 import { TextInputBlockComponent } from './text-input-block';
-import { BlockComponent } from './block';
+import { BlockComponent, BlockCheckboxComponent } from './block';
 
 @NgModule({
   imports: [
@@ -17,6 +17,7 @@ import { BlockComponent } from './block';
     TextBlockComponent,
     DateInputBlockComponent,
     TextInputBlockComponent,
+    BlockCheckboxComponent,
   ],
 })
 export class EditorModule { }
