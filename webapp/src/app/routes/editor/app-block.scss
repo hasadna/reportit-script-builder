@@ -1,0 +1,56 @@
+.app-block {
+  width: 400px;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+  >.title {
+    font-size: 15px;
+    color: #404040;
+    font-family: Arial;
+  }
+  >.text-field {
+    margin-top: 10px;
+    >.label {
+      font-size: 13px;
+      font-family: Arial;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+    textarea, input {
+      font-family: Arial;
+      font-size: 14px;
+    }
+    >input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 2px 5px;
+    }
+  }
+  >.delete {
+    position: absolute;
+    top: 0;
+    $width: 50px;
+    width: $width;
+    height: 100%;
+    right: -$width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    >.mat-icon {
+      font-size: 23px;
+      line-height: normal;
+      height: auto;
+      width: auto;
+      color: #404040;
+      opacity: 0.2;
+    }
+    &:hover {
+      >.mat-icon {
+        opacity: 0.8;
+        font-size: 30px;
+      }
+    }
+  }
+}

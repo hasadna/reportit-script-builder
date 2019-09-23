@@ -1,0 +1,24 @@
+<div class="component">
+  <mat-card class="app-block">
+    <div class="title">Switch</div>
+    <div class="arg text-field">
+      <div class="label">Arg:</div>
+      <input [(ngModel)]="block.arg">
+    </div>
+    <button mat-flat-button color="primary" (click)="addCase()">Add Case</button>
+    <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  </mat-card>
+  <div class="case" *ngFor="let case of block.cases; let i = index">
+    <mat-card class="app-block">
+      <div class="title">Case</div>
+      <div class="condition text-field">
+        <div class="label">Match:</div>
+        <input [(ngModel)]="case.match">
+      </div>
+      <div class="delete" (click)="deleteCase(i)"><mat-icon>delete</mat-icon></div>
+    </mat-card>
+    <div class="steps">
+      <block-list [blockList]="case.steps"></block-list>
+    </div>
+  </div>
+</div>

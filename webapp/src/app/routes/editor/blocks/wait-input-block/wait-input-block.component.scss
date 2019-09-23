@@ -1,6 +1,6 @@
+@import '../../app-block';
+
 .component {
-  position: relative;
-  margin-bottom: 10px;
   >.validation {
     margin-top: 10px;
     >.validation-button {
@@ -29,33 +29,6 @@
       flex-direction: column;
       mat-checkbox {
         font-size: 14px;
-      }
-    }
-  }
-  >.delete {
-    position: absolute;
-    top: 0;
-    $width: 50px;
-    width: $width;
-    height: 100%;
-    right: -$width;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    >.mat-icon {
-      font-size: 23px;
-      line-height: normal;
-      height: auto;
-      width: auto;
-      color: #404040;
-      opacity: 0.2;
-    }
-    &:hover {
-      >.mat-icon {
-        opacity: 0.8;
-        font-size: 30px;
       }
     }
   }
