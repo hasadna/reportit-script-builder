@@ -1,30 +1,46 @@
 import { BlockType, BlockValidation } from './enum';
+import { Case, WaitButton, WaitStepButton } from './interfaces';
 
-export class BlockData {
-  id: string;
-  variableId: string;
-  text: string;
-  date: Date;
+export class Block {
   type: BlockType;
-  order: number;
+
+  constructor(blockType: BlockType) {
+    this.type = blockType;
+  }
+
+  isSayBlock(): boolean {
+    return this.type === BlockType.Say;
+  }
+
+  isWaitDateBlock(): boolean {
+    return this.type === BlockType.WaitDate;
+  }
+
+  isWaitTextBlock(): boolean {
+    return this.type === BlockType.WaitText;
+  }
+
+  isWaitInputBlock(): boolean {
+    return this.isWaitDateBlock() || this.isWaitTextBlock();
+  }
+
+  isSwitchBlock(): boolean {
+    return this.type === BlockType.Switch;
+  }
+}
+
+export class SayBlock extends Block {
+  say: string;
+}
+
+export class WaitVariableBlock extends Block {
+  variable: string;
+}
+
+export class WaitInputBlock extends WaitVariableBlock {
+  placeholder: string;
   validations: BlockValidation[] = [];
-
-  constructor(id: string, type: BlockType) {
-    this.id = id;
-    this.type = type;
-  }
-
-  isTextBlock(): boolean {
-    return this.type === BlockType.Text;
-  }
-
-  isDateBlock(): boolean {
-    return this.type === BlockType.Date;
-  }
-
-  isInputBlock(): boolean {
-    return this.type === BlockType.Input;
-  }
+  validation: string;
 
   setIsChecked(validation: BlockValidation, isChecked: boolean): void {
     if (isChecked) {
@@ -42,9 +58,17 @@ export class BlockData {
   getIsChecked(validation: BlockValidation): boolean {
     return this.validations.includes(validation);
   }
+}
 
-  static fromObject(block: BlockData): BlockData {
-    const newBlock = new BlockData(block.id, block.type);
-    return Object.assign(newBlock, block);
-  }
+export class WaitButtonBlock extends WaitVariableBlock {
+  buttons: WaitButton[] = [];
+}
+
+export class WaitButtonStepBlock extends Block {
+  buttons: WaitStepButton[] = [];
+}
+
+export class SwitchBlock extends Block {
+  arg: string;
+  cases: Case[] = [];
 }

@@ -1,8 +1,10 @@
 <mat-card class="component app-block">
-  <text-block [block]="block" *ngIf="block.isTextBlock()"></text-block>
-  <date-input-block [block]="block" *ngIf="block.isDateBlock()"></date-input-block>
-  <text-input-block [block]="block" *ngIf="block.isInputBlock()"></text-input-block>
-  <div class="validation" *ngIf="block.isDateBlock() || block.isInputBlock()">
+  <div class="title">Wait {{ label }}</div>
+  <div class="name text-field">
+    <div class="label">Variable:</div>
+    <input [formControl]="input">
+  </div>
+  <div class="validation">
     <div class="validation-button">
       <div class="open-button" (click)="validationToggle()">
         <mat-icon *ngIf="!isValidationOpen">keyboard_arrow_down</mat-icon>
@@ -18,7 +20,5 @@
       >{{ checkbox.label }}</block-checkbox>
     </div>
   </div>
-  <div class="delete" (click)="blockService.deleteBlock(block)">
-    <mat-icon>delete</mat-icon>
-  </div>
+  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
 </mat-card>

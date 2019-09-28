@@ -1,0 +1,20 @@
+<div class="component">
+  <div class="blocks" *ngFor="let block of blockList; let i = index">
+    <say-block
+      *ngIf="block.isSayBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></say-block>
+    <wait-input-block
+      *ngIf="block.isWaitInputBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></wait-input-block>
+    <switch-block
+      *ngIf="block.isSwitchBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></switch-block>
+  </div>
+  <add-block (add)="addBlock($event)"></add-block>
+</div>

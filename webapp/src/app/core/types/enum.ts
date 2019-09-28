@@ -1,7 +1,10 @@
 export enum  BlockType {
-  Text,
-  Date,
-  Input,
+  Say,
+  WaitDate,
+  WaitText,
+  Switch,
+  WaitButton,
+  WaitButtonStep,
 }
 
 export enum  BlockValidation {

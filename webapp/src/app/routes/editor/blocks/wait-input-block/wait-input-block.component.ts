@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
-import { BlockData, BlockValidation } from '@/core/types';
-import { BlockService } from '@/core/services';
+import { BlockValidation, WaitInputBlock } from '@/core/types';
 
 interface Checkbox {
   label: string;
@@ -9,22 +9,29 @@ interface Checkbox {
 }
 
 @Component({
-  selector: 'app-block',
-  templateUrl: './block.component.html',
-  styleUrls: ['./block.component.scss'],
+  selector: 'wait-input-block',
+  templateUrl: './wait-input-block.component.html',
+  styleUrls: ['./wait-input-block.component.scss'],
 })
-export class BlockComponent implements OnInit {
+export class WaitInputBlockComponent implements OnInit {
+  input = new FormControl();
   isValidationOpen: boolean = false;
   checkboxes: Checkbox[] = [];
-  @Input() block: BlockData;
-
-  constructor(public blockService: BlockService) { }
+  label: string;
+  @Input() block: WaitInputBlock;
+  @Output() remove = new EventEmitter<void>();
 
   ngOnInit() {
     if (this.block.validations.length > 0) {
       this.isValidationOpen = true;
     }
+    this.label = this.block.isWaitDateBlock() ? 'Date' : 'Text';
     this.initValidation();
+
+    this.input.setValue(this.block.variable, { emitEvent: false });
+    this.input.valueChanges.subscribe(text => {
+      this.block.variable = text;
+    });
   }
 
   initValidation(): void {
@@ -32,8 +39,8 @@ export class BlockComponent implements OnInit {
       label: 'Verify no empty answer',
       validation: BlockValidation.NoEmptyAnswer,
     });
-    if (this.block.isInputBlock()) {
-      // Input validation only
+    if (this.block.isWaitTextBlock()) {
+      // Text validation only
       this.checkboxes.push({
         label: "Verify it's a valid email address",
         validation: BlockValidation.EmailAddress,
@@ -43,7 +50,7 @@ export class BlockComponent implements OnInit {
         validation: BlockValidation.PhoneNumber,
       });
     }
-    if (this.block.isDateBlock()) {
+    if (this.block.isWaitDateBlock()) {
       // Date validation only
       this.checkboxes.push({
         label: "Verify it's a valid date",

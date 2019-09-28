@@ -1,0 +1,15 @@
+@import '../../app-block';
+
+.component {
+  >.app-block {
+    >button {
+      margin-top: 10px;
+    }
+  }
+  >.case {
+    margin-left: 50px;
+    >.steps {
+      margin-left: 50px;
+    }
+  }
+}

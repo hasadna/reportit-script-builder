@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { BlockData, BlockValidation } from '@/core/types';
+import { WaitInputBlock, BlockValidation } from '@/core/types';
 
 @Component({
   selector: 'block-checkbox',
@@ -9,7 +9,7 @@ import { BlockData, BlockValidation } from '@/core/types';
 })
 export class BlockCheckboxComponent implements OnInit {
   checkbox = new FormControl();
-  @Input() block: BlockData;
+  @Input() block: WaitInputBlock;
   @Input() validation: BlockValidation;
 
   constructor() {
