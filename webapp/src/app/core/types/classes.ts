@@ -27,6 +27,26 @@ export class Block {
   isSwitchBlock(): boolean {
     return this.type === BlockType.Switch;
   }
+
+  isSnippetBlock(): boolean {
+    return this.type === BlockType.Snippet;
+  }
+
+  isGotoBlock(): boolean {
+    return this.type === BlockType.Goto;
+  }
+
+  isWaitButtonBlock(): boolean {
+    return this.type === BlockType.WaitButton;
+  }
+
+  isWaitButtonStepBlock(): boolean {
+    return this.type === BlockType.WaitButtonStep;
+  }
+
+  isDoBlock(): boolean {
+    return this.type === BlockType.Do;
+  }
 }
 
 export class SayBlock extends Block {
@@ -71,4 +91,20 @@ export class WaitButtonStepBlock extends Block {
 export class SwitchBlock extends Block {
   arg: string;
   cases: Case[] = [];
+}
+
+export class SnippetBlock extends Block {
+  name: string;
+  isDefault: boolean = false;
+  steps: Block[] = [];
+}
+
+export class GotoBlock extends Block {
+  goto: string;
+}
+
+export class DoBlock extends Block {
+  cmd: string;
+  params: string;
+  variable: string;
 }

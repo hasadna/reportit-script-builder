@@ -5,7 +5,7 @@
     <textarea
       matTextareaAutosize
       matAutosizeMinRows="2"
-      [formControl]="textarea"
+      [(ngModel)]="block.say"
     ></textarea>
   </div>
   <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>

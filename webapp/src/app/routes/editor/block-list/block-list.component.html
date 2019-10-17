@@ -15,6 +15,31 @@
       [block]="block"
       (remove)="removeBlock(i)"
     ></switch-block>
+    <snippet-block
+      *ngIf="block.isSnippetBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></snippet-block>
+    <goto-block
+      *ngIf="block.isGotoBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></goto-block>
+    <wait-button-block
+      *ngIf="block.isWaitButtonBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></wait-button-block>
+    <wait-button-step-block
+      *ngIf="block.isWaitButtonStepBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></wait-button-step-block>
+    <do-block
+      *ngIf="block.isDoBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+    ></do-block>
   </div>
   <add-block (add)="addBlock($event)"></add-block>
 </div>

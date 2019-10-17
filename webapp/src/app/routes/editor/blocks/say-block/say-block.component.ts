@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { SayBlock } from '@/core/types';
 
@@ -8,15 +7,7 @@ import { SayBlock } from '@/core/types';
   templateUrl: './say-block.component.html',
   styleUrls: ['./say-block.component.scss'],
 })
-export class SayBlockComponent implements OnInit {
-  textarea = new FormControl();
+export class SayBlockComponent {
   @Input() block: SayBlock;
   @Output() remove = new EventEmitter<void>();
-
-  ngOnInit() {
-    this.textarea.setValue(this.block.say, { emitEvent: false });
-    this.textarea.valueChanges.subscribe(text => {
-      this.block.say = text;
-    });
-  }
 }

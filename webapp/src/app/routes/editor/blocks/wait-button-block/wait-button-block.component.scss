@@ -1,0 +1,12 @@
+@import '../../app-block';
+
+.component {
+  >.app-block {
+    >button {
+      margin-top: 10px;
+    }
+  }
+  >.buttons {
+    margin-left: 50px;
+  }
+}

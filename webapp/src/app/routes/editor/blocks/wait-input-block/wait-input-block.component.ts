@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 import { BlockValidation, WaitInputBlock } from '@/core/types';
 
@@ -14,7 +13,6 @@ interface Checkbox {
   styleUrls: ['./wait-input-block.component.scss'],
 })
 export class WaitInputBlockComponent implements OnInit {
-  input = new FormControl();
   isValidationOpen: boolean = false;
   checkboxes: Checkbox[] = [];
   label: string;
@@ -27,11 +25,6 @@ export class WaitInputBlockComponent implements OnInit {
     }
     this.label = this.block.isWaitDateBlock() ? 'Date' : 'Text';
     this.initValidation();
-
-    this.input.setValue(this.block.variable, { emitEvent: false });
-    this.input.valueChanges.subscribe(text => {
-      this.block.variable = text;
-    });
   }
 
   initValidation(): void {

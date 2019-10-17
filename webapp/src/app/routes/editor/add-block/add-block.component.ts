@@ -12,7 +12,11 @@ export class AddBlockComponent {
     { label: 'Say', type: BlockType.Say },
     { label: 'Wait Date', type: BlockType.WaitDate },
     { label: 'Wait Text', type: BlockType.WaitText },
+    { label: 'Wait Button', type: BlockType.WaitButton },
+    { label: 'Wait Step Button', type: BlockType.WaitButtonStep },
     { label: 'Switch', type: BlockType.Switch },
+    { label: 'Go To', type: BlockType.Goto },
+    { label: 'Do', type: BlockType.Do },
   ];
   blockTypeSelected: BlockType = BlockType.Say;
   @Output() add = new EventEmitter<BlockType>();
