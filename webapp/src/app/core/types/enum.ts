@@ -5,6 +5,9 @@ export enum  BlockType {
   Switch,
   WaitButton,
   WaitButtonStep,
+  Snippet,
+  Goto,
+  Do,
 }
 
 export enum  BlockValidation {

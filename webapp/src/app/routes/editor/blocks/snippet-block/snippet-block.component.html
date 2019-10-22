@@ -1,0 +1,18 @@
+<div class="component">
+  <mat-card class="app-block">
+    <div class="title">Snippet</div>
+    <div class="arg text-field">
+      <div class="label">Name:</div>
+      <input [(ngModel)]="block.name" *ngIf="!block.isDefault">
+      <span class="static" *ngIf="block.isDefault">{{ block.name }}</span>
+    </div>
+    <div
+      class="delete"
+      (click)="remove.emit()"
+      *ngIf="!block.isDefault"
+    ><mat-icon>delete</mat-icon></div>
+  </mat-card>
+  <div class="steps">
+    <block-list [blockList]="block.steps"></block-list>
+  </div>
+</div>

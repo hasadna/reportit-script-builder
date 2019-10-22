@@ -1,0 +1,20 @@
+<div class="component">
+  <mat-card class="app-block">
+    <div class="title">Wait Step Button</div>
+    <button mat-flat-button color="primary" (click)="addButton()">Add Button</button>
+    <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  </mat-card>
+  <div class="buttons" *ngFor="let button of block.buttons; let i = index">
+    <mat-card class="app-block">
+      <div class="title">Button</div>
+      <div class="condition text-field">
+        <div class="label">Show:</div>
+        <input [(ngModel)]="button.show">
+      </div>
+      <div class="delete" (click)="deleteButton(i)"><mat-icon>delete</mat-icon></div>
+    </mat-card>
+    <div class="steps">
+      <block-list [blockList]="button.steps"></block-list>
+    </div>
+  </div>
+</div>

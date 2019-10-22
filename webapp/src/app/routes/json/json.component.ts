@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Block, SwitchBlock } from '@/core/types';
+import { Block, SwitchBlock, WaitButtonStepBlock, SnippetBlock } from '@/core/types';
 import { BlockService, NotificationService } from '@/core/services';
 
 @Component({
@@ -35,10 +35,19 @@ export class JsonComponent {
       // So we need to recreate them
       const newBlock: Block = this.blockService.fromObject(block);
       if (newBlock.isSwitchBlock()) {
-        // Recreate sub blocks
+        // Recreate switch sub blocks
         for (const blockCase of (newBlock as SwitchBlock).cases) {
           blockCase.steps = this.getBlockList(blockCase.steps);
         }
+      } else if (newBlock.isWaitButtonStepBlock()) {
+        // Recreate buttons sub blocks
+        for (const blockButton of (newBlock as WaitButtonStepBlock).buttons) {
+          blockButton.steps = this.getBlockList(blockButton.steps);
+        }
+      } else if (newBlock.isSnippetBlock()) {
+        // Recreate snippet sub blocks
+        const snippetBlock = newBlock as SnippetBlock;
+        snippetBlock.steps = this.getBlockList(snippetBlock.steps);
       }
       blockList.push(newBlock);
     }

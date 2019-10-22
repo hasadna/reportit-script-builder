@@ -1,0 +1,16 @@
+<mat-card class="component app-block">
+  <div class="title">Do</div>
+  <div class="message text-field">
+    <div class="label">cmd:</div>
+    <input [(ngModel)]="block.cmd">
+  </div>
+  <div class="message text-field">
+    <div class="label">variable:</div>
+    <input [(ngModel)]="block.variable">
+  </div>
+  <div class="message text-field">
+    <div class="label">params:</div>
+    <input [(ngModel)]="block.params">
+  </div>
+  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+</mat-card>
