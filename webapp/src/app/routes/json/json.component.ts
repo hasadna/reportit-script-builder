@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Block, SwitchBlock, WaitButtonStepBlock, SnippetBlock } from '@/core/types';
 import { BlockService, NotificationService } from '@/core/services';
+import {YAML} from 'json-to-pretty-yaml/index';
 
 @Component({
   selector: 'page-json',
@@ -56,6 +57,7 @@ export class JsonComponent {
 
   // Converts service data to JSON
   toJSON(): void {
-    this.json = JSON.stringify(this.blockService.blockList);
+    // y dis not work?
+    this.json = YAML.stringify(this.blockService.blockList, null, 2);
   }
 }

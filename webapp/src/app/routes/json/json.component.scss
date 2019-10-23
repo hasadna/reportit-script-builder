@@ -8,7 +8,9 @@
   }
   >.editor {
     textarea {
-      width: 400px;
+      width: 800px;
+      // Why is it when I set 200px I get "computed" 600px?
+      height: 200px;
     }
   }
   >.buttons {
