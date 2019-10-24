@@ -11,7 +11,10 @@
   <div class="case" *ngFor="let case of block.cases; let i = index">
     <mat-card class="app-block">
       <div class="title">Case</div>
-      <div class="condition text-field">
+      <div class="text-field">
+        <mat-checkbox color="primary" [(ngModel)]="case.isDefault">Default</mat-checkbox>
+      </div>
+      <div class="condition text-field" *ngIf="!case.isDefault">
         <div class="label">Match:</div>
         <input [(ngModel)]="case.match">
       </div>

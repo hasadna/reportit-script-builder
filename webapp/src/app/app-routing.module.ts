@@ -4,12 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   EditorComponent,
-  JsonComponent,
+  YamlComponent,
 } from '@/routes';
 
 const appRoutes: Routes = [
   { path: '', component: EditorComponent },
-  { path: 'json', component: JsonComponent },
+  { path: 'yaml', component: YamlComponent },
   { path: '**', component: EditorComponent },
 ];
 

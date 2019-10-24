@@ -6,11 +6,11 @@
     <textarea
       matTextareaAutosize
       matAutosizeMinRows="3"
-      [(ngModel)]="json"
+      [(ngModel)]="yaml"
     ></textarea>
   </div>
   <div class="buttons">
-    <button mat-flat-button color="primary" (click)="fromJSON()">Save</button>
-    <button mat-flat-button (click)="toJSON()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="fromYAML()">Save</button>
+    <button mat-flat-button (click)="toYAML()">Cancel</button>
   </div>
 </div>

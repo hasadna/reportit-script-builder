@@ -14,6 +14,7 @@ export class SwitchBlockComponent {
   addCase(): void {
     this.block.cases.push({
       match: '',
+      isDefault: false,
       steps: [],
     });
   }
