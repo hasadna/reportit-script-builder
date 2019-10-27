@@ -35,7 +35,6 @@ export class BlockService {
       case BlockType.Goto: return new GotoBlock(blockType);
       case BlockType.WaitButton: return new WaitButtonBlock(blockType);
       case BlockType.WaitButtonStep: return new WaitButtonStepBlock(blockType);
-      case BlockType.WaitButtonStep: return new WaitButtonStepBlock(blockType);
       case BlockType.Do: return new DoBlock(blockType);
 
       default: throw new Error('Block type not found');

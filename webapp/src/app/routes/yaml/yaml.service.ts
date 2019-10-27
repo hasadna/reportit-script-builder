@@ -93,11 +93,15 @@ export class YamlService {
           const switchBlock = block as SwitchBlock;
           const cases: SwitchCase[] = [];
           for (const blockCase of switchBlock.cases) {
-            cases.push({
-              steps: this.blocksToYaml(blockCase.steps).steps,
-              default: blockCase.isDefault,
-              match: blockCase.match,
-            });
+            const switchCase: SwitchCase = {
+              steps: this.blocksToYaml(blockCase.steps).steps
+            };
+            if (blockCase.isDefault) {
+              switchCase.default = blockCase.isDefault;
+            } else {
+              switchCase.match = blockCase.match;
+            }
+            cases.push(switchCase);
           }
           yaml.steps.push({
             switch: {
