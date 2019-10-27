@@ -17,14 +17,6 @@ import {
 export class BlockService {
   blockList: Block[] = [];
 
-  constructor() {
-    // Create initial snippet block
-    const defaultSnippet = new SnippetBlock(BlockType.Snippet);
-    defaultSnippet.name = 'default';
-    defaultSnippet.isDefault = true;
-    this.blockList.push(defaultSnippet);
-  }
-
   getNewBlock(blockType: BlockType):
     SayBlock |
     WaitInputBlock |

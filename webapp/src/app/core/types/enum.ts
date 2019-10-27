@@ -1,4 +1,4 @@
-export enum  BlockType {
+export enum BlockType {
   Say,
   WaitDate,
   WaitText,
@@ -10,7 +10,7 @@ export enum  BlockType {
   Do,
 }
 
-export enum  BlockValidation {
+export enum BlockValidation {
   NoEmptyAnswer,
   PhoneNumber,
   EmailAddress,

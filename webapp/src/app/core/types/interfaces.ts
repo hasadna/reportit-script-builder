@@ -8,6 +8,7 @@ export interface BlockSelect {
 
 export interface Case {
   match: string;
+  isDefault: boolean;
   steps: Block[];
 }
 
