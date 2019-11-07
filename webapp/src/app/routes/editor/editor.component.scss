@@ -22,16 +22,3 @@
   background: #03a9f4;
   z-index: 2;
 }
-.grid {
-  position: fixed;
-  left: 20px;
-  top: 0;
-  display: flex;
-  z-index: 1;
-  >.line {
-    width: 1px;
-    height: 100vh;
-    background: #cccccc;
-    margin-right: 49px;
-  }
-}

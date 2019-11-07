@@ -6,6 +6,7 @@ import { BlockService } from '@/core/services';
 @Component({
   selector: 'block-list',
   templateUrl: './block-list.component.html',
+  styleUrls: ['./block-list.component.scss'],
 })
 export class BlockListComponent {
   @Input() blockList: Block[];
