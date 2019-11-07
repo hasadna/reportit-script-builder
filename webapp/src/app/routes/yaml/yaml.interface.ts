@@ -5,7 +5,7 @@ export interface Yaml {
 }
 
 export interface Steps {
-  steps: (
+  steps?: (
     ChatSay |
     ChatDo |
     ChatGoto |
