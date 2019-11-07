@@ -2,9 +2,9 @@
   <div class="blocks" *ngFor="let block of blockService.blockList; let i = index">
     <snippet-block [block]="block" (remove)="removeSnippet(i)"></snippet-block>
   </div>
-  <mat-card class="app-block">
+  <div class="new-block app-block">
     <div class="button">
       <button mat-flat-button color="primary" (click)="addSnippet()">Add Snippet</button>
     </div>
-  </mat-card>
+  </div>
 </div>

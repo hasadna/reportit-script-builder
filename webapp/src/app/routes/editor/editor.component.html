@@ -1,6 +1,11 @@
 <div class="page">
   <div class="title">
-    <span>Chatbot editor</span><a [routerLink]="'/yaml'">YAML</a>
+    <span>Chatbot editor</span>
+    <button mat-flat-button [routerLink]="'/yaml'">YAML</button>
   </div>
   <snippets></snippets>
+</div>
+<div class="grid-header"></div>
+<div class="grid">
+  <div class="line" *ngFor="let line of grid"></div>
 </div>
