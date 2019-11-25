@@ -4,6 +4,9 @@
     <div class="label">Variable:</div>
     <input [(ngModel)]="block.variable">
   </div>
+  <div class="text-field" *ngIf="!block.isWaitDateBlock()">
+    <mat-checkbox color="primary" [(ngModel)]="block.long">Long</mat-checkbox>
+  </div> 
   <div class="validation">
     <div class="validation-button">
       <div class="open-button" (click)="validationToggle()">

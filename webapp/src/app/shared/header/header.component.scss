@@ -1,0 +1,53 @@
+.header {
+  height: 60px;
+  background-color: #03a9f4;
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  >.label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    user-select: none;
+    >span {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+  >.menu {
+    display: flex;
+    margin-left: 50px;
+    >.page {
+      outline: none;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      font-size: 16px;
+      width: 130px;
+      color: white;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    >.unselected {
+      background: rgba(255,255,255,.2);
+      cursor: default;
+    }
+    >.selected {
+      background: rgba(255,255,255,0);
+      &:hover {
+        background: rgba(255,255,255,.5)
+      }
+    }
+  }
+}
+.placeholder {
+  height: 60px;
+}

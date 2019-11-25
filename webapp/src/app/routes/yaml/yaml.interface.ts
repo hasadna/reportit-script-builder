@@ -43,6 +43,7 @@ export interface ChatWaitVar {
     validation?: string;
     validations?: string[];
     date?: boolean;
+    long?: boolean;
   };
 }
 

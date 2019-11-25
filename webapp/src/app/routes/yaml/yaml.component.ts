@@ -24,13 +24,20 @@ export class YamlComponent {
 
   // Converts YAML string to service data
   fromYAML(): void {
-    let yaml: Yaml[];
+    let yamlList: Yaml[];
     try {
-      yaml = YAML.parse(this.yaml);
+      yamlList = YAML.parse(this.yaml);
     } catch (e) {
+      console.error(e);
       this.notificationService.error('Parsing error');
     }
-    if (yaml) {
+    if (yamlList) {
+      if (!yamlList || yamlList.length !== 1) {
+        throw new Error('Invalid yaml');
+      }
+      const yaml: Yaml = yamlList[0];
+      this.blockService.description = yaml.description;
+      this.blockService.name = yaml.name;
       this.blockService.blockList = this.yamlService.yamlToBlocks(yaml);
       this.notificationService.success('Saved');
     }
@@ -39,8 +46,8 @@ export class YamlComponent {
   // Converts service data to YAML
   toYAML(): void {
     const yamlList: Yaml[] = [{
-      description: 'תסריט לניהול שיחות מצד הפונה',
-      name: 'פונה',
+      description: this.blockService.description,
+      name: this.blockService.name,
       snippets: this.yamlService.snippetsToYaml(this.blockService.blockList),
     }];
     this.yaml = YAML.stringify(yamlList);

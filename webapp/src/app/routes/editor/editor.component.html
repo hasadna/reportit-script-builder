@@ -1,8 +1,14 @@
 <div class="page">
-  <div class="title">
-    <span>Chatbot editor</span>
-    <button mat-flat-button [routerLink]="'/yaml'">YAML</button>
-  </div>
+  <mat-card class="app-block">
+    <div class="title">Snippets</div>
+    <div class="text-field">
+      <div class="label">Description:</div>
+      <input [(ngModel)]="blockService.description">
+    </div>
+    <div class="text-field">
+      <div class="label">Name:</div>
+      <input [(ngModel)]="blockService.name">
+    </div>
+  </mat-card>
   <snippets></snippets>
 </div>
-<div class="grid-header"></div>
