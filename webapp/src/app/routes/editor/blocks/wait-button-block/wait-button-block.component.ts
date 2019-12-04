@@ -16,7 +16,7 @@ export class WaitButtonBlockComponent {
       show: '',
       value: '',
     };
-    this.block.buttons.push(button);
+    this.block.buttons.unshift(button);
   }
 
   deleteButton(index: number): void {

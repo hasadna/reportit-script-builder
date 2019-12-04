@@ -1,13 +1,13 @@
-<div class="page">
+<div class="page" *ngIf="!loadingService.isLoading">
   <mat-card class="app-block">
     <div class="title">Snippets</div>
     <div class="text-field">
       <div class="label">Description:</div>
-      <input [(ngModel)]="blockService.description">
+      <input [(ngModel)]="yamlService.description">
     </div>
     <div class="text-field">
       <div class="label">Name:</div>
-      <input [(ngModel)]="blockService.name">
+      <input [(ngModel)]="yamlService.name">
     </div>
   </mat-card>
   <snippets></snippets>

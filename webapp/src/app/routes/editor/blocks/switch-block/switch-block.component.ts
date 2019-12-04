@@ -12,7 +12,7 @@ export class SwitchBlockComponent {
   @Output() remove = new EventEmitter<void>();
 
   addCase(): void {
-    this.block.cases.push({
+    this.block.cases.unshift({
       match: '',
       isDefault: false,
       steps: [],

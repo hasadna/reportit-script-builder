@@ -6,8 +6,12 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@/import';
 import { HeaderComponent } from './header';
+import { LoadingComponent } from './loading';
 
-const ExportDeclarations = [HeaderComponent];
+const ExportDeclarations = [
+  HeaderComponent,
+  LoadingComponent,
+];
 const ExportModules = [
   RouterModule,
   FormsModule,

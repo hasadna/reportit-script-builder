@@ -2,12 +2,27 @@
   <div class="label">
     <span>Chatbot editor</span>
   </div>
-  <div class="menu">
-    <a
-      *ngFor="let route of routes"
-      class="page {{ url === route.url ? 'unselected' : 'selected' }}"
-      [routerLink]="route.url"
-    >{{ route.label }}</a>
-  </div>
+  <ng-container *ngIf="authService.isOnline">
+    <div class="menu">
+      <a
+        *ngFor="let route of routes"
+        class="page {{ url === route.url ? 'unselected' : 'selected' }}"
+        [routerLink]="route.url"
+      >{{ route.label }}</a>
+    </div>
+    <div class="firebase">
+      <div class="radio">
+        <mat-radio-group [formControl]="radio">
+          <mat-radio-button color="primary" value="user">User</mat-radio-button>
+          <mat-radio-button color="primary" value="agent">Agent</mat-radio-button>
+        </mat-radio-group>
+        <button mat-flat-button color="primary" (click)="save()">Save</button>
+      </div>
+    </div>
+    <div class="flex"></div>
+    <div class="auth">
+      <button mat-flat-button (click)="logOut()">Log out</button>
+    </div>
+  </ng-container>
 </div>
 <div class="placeholder"></div>
