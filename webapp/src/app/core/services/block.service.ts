@@ -15,8 +15,8 @@ import {
 
 @Injectable()
 export class BlockService {
-  description: string = 'תסריט לניהול שיחות מצד הפונה';
-  name: string = 'פונה';
+  description: string = '';
+  name: string = '';
   blockList: Block[] = [];
 
   getNewBlock(blockType: BlockType):
