@@ -15,6 +15,8 @@ import {
 
 @Injectable()
 export class BlockService {
+  description: string = '';
+  name: string = '';
   blockList: Block[] = [];
 
   getNewBlock(blockType: BlockType):

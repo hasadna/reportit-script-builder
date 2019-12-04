@@ -54,13 +54,14 @@ export class SayBlock extends Block {
 }
 
 export class WaitVariableBlock extends Block {
-  variable: string;
+  variable: string = '';
 }
 
 export class WaitInputBlock extends WaitVariableBlock {
   placeholder: string;
   validations: BlockValidation[] = [];
   validation: string;
+  long: boolean = false;
 
   setIsChecked(validation: BlockValidation, isChecked: boolean): void {
     if (isChecked) {
@@ -94,7 +95,7 @@ export class SwitchBlock extends Block {
 }
 
 export class SnippetBlock extends Block {
-  name: string;
+  name: string = '';
   isDefault: boolean = false;
   steps: Block[] = [];
 }

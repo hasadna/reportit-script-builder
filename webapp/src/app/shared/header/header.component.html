@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="label">
+    <span>Chatbot editor</span>
+  </div>
+  <div class="menu">
+    <a
+      *ngFor="let route of routes"
+      class="page {{ url === route.url ? 'unselected' : 'selected' }}"
+      [routerLink]="route.url"
+    >{{ route.label }}</a>
+  </div>
+</div>
+<div class="placeholder"></div>

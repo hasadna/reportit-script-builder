@@ -86,6 +86,8 @@ export class YamlService {
           }
           if (waitBlock.type === BlockType.WaitDate) {
             waitYamlBlock.wait.date = true;
+          } else if (waitBlock.long) {
+            waitYamlBlock.wait.long = waitBlock.long;
           }
           yaml.steps.push(waitYamlBlock);
           break;
@@ -160,12 +162,9 @@ export class YamlService {
   }
 
   // Converts YAML snippets to app snippets
-  yamlToBlocks(yaml: Yaml[]): Block[] {
-    if (!yaml || yaml.length !== 1) {
-      throw new Error('Invalid yaml');
-    }
+  yamlToBlocks(yaml: Yaml): Block[] {
     const blockList: Block[] = [];
-    for (const snippet of yaml[0].snippets) {
+    for (const snippet of yaml.snippets) {
       const snippetBlock = new SnippetBlock(BlockType.Snippet);
       snippetBlock.name = snippet.name;
       snippetBlock.steps = this.yamlStepsToBlockSteps(snippet);
@@ -209,6 +208,9 @@ export class YamlService {
           switchBlock.arg = chatSwitch.switch.arg;
           const cases: Case[] = [];
           for (const switchCase of chatSwitch.switch.cases) {
+            if (!switchCase.steps) {
+              switchCase.steps = [];
+            }
             cases.push({
               steps: this.yamlStepsToBlockSteps(switchCase),
               isDefault: switchCase.default,
@@ -240,6 +242,10 @@ export class YamlService {
               BlockType.WaitText;
             const waitInputBlock = new WaitInputBlock(blockType);
             waitInputBlock.variable = chatWaitVar.wait.variable;
+            if (!chatWaitVar.wait.date) {
+              // Wait text only
+              waitInputBlock.long = chatWaitVar.wait.long;
+            }
             waitInputBlock.placeholder = chatWaitVar.wait.placeholder;
             waitInputBlock.validation = chatWaitVar.wait.validation;
             if (chatWaitVar.wait.validations) {

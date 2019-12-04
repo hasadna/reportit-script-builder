@@ -5,8 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@/import';
+import { HeaderComponent } from './header';
 
-const ExportDeclarations = [];
+const ExportDeclarations = [HeaderComponent];
 const ExportModules = [
   RouterModule,
   FormsModule,
