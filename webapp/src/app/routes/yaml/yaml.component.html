@@ -1,13 +1,9 @@
 <div class="page">
-  <div class="editor">
+  <div class="editor" *ngIf="!loadingService.isLoading">
     <textarea
       matTextareaAutosize
       matAutosizeMinRows="3"
-      [(ngModel)]="yaml"
+      [(ngModel)]="yamlService.yaml"
     ></textarea>
-  </div>
-  <div class="buttons">
-    <button mat-flat-button color="primary" (click)="fromYAML()">Save</button>
-    <button mat-flat-button (click)="toYAML()">Cancel</button>
   </div>
 </div>

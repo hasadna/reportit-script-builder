@@ -12,7 +12,7 @@ export class WaitButtonStepBlockComponent {
   @Output() remove = new EventEmitter<void>();
 
   addButton(): void {
-    this.block.buttons.push({
+    this.block.buttons.unshift({
       show: '',
       steps: [],
     });

@@ -5,12 +5,21 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   EditorComponent,
   YamlComponent,
+  LoginComponent,
 } from '@/routes';
+import { AuthGuard } from '@/core/services';
 
 const appRoutes: Routes = [
-  { path: '', component: EditorComponent },
-  { path: 'yaml', component: YamlComponent },
-  { path: '**', component: EditorComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: EditorComponent },
+      { path: 'yaml', component: YamlComponent },
+    ],
+  },
+  { path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({

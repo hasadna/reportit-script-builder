@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as YAML from 'yaml';
 
 import {
   BlockType,
@@ -27,7 +28,10 @@ import {
   Snippet,
   SwitchCase,
   ButtonStep,
-} from './yaml.interface';
+} from '@/core/types';
+
+import { BlockService } from './block.service';
+import { NotificationService } from './notification.service';
 
 const VALIDATION_LABELS: string[] = [
   'no-empty-answer',
@@ -39,6 +43,46 @@ const VALIDATION_LABELS: string[] = [
 
 @Injectable()
 export class YamlService {
+  description: string = '';
+  name: string = '';
+  yaml: string;
+
+  constructor(
+    private blockService: BlockService,
+    private notificationService: NotificationService,
+  ) { }
+
+  // Converts YAML string to app data.
+  // Returns block list if yaml is valid.
+  fromYAML(): Block[] {
+    let yamlList: Yaml[];
+    try {
+      yamlList = YAML.parse(this.yaml);
+    } catch (e) {
+      console.error(e);
+      this.notificationService.error('Parsing error');
+    }
+    if (yamlList) {
+      if (!yamlList || yamlList.length !== 1) {
+        throw new Error('Invalid yaml');
+      }
+      const yaml: Yaml = yamlList[0];
+      this.description = yaml.description;
+      this.name = yaml.name;
+      return this.yamlToBlocks(yaml);
+    }
+  }
+
+  // Converts app data to YAML string
+  toYAML(): void {
+    const yamlList: Yaml[] = [{
+      description: this.description,
+      name: this.name,
+      snippets: this.snippetsToYaml(this.blockService.blockList),
+    }];
+    this.yaml = YAML.stringify(yamlList);
+  }
+
   // Converts app snippets to YAML snippets
   snippetsToYaml(blockList: Block[]) {
     const snippet: Snippet[] = [];

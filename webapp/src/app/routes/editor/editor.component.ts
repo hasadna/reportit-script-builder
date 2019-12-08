@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BlockService } from '@/core/services';
+import { YamlService, LoadingService } from '@/core/services';
 
 @Component({
   selector: 'page-editor',
@@ -8,5 +8,8 @@ import { BlockService } from '@/core/services';
   styleUrls: ['./editor.component.scss'],
 })
 export class EditorComponent {
-  constructor(public blockService: BlockService) { }
+  constructor(
+    public yamlService: YamlService,
+    public loadingService: LoadingService,
+  ) { }
 }
