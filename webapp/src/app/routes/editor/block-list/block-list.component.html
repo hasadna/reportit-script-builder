@@ -4,41 +4,49 @@
       *ngIf="block.isSayBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></say-block>
     <wait-input-block
       *ngIf="block.isWaitInputBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></wait-input-block>
     <switch-block
       *ngIf="block.isSwitchBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></switch-block>
     <snippet-block
       *ngIf="block.isSnippetBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></snippet-block>
     <goto-block
       *ngIf="block.isGotoBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></goto-block>
     <wait-button-block
       *ngIf="block.isWaitButtonBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></wait-button-block>
     <wait-button-step-block
       *ngIf="block.isWaitButtonStepBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></wait-button-step-block>
     <do-block
       *ngIf="block.isDoBlock()"
       [block]="block"
       (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
     ></do-block>
   </div>
   <add-block (add)="addBlock($event)"></add-block>

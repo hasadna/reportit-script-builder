@@ -54,6 +54,26 @@
       }
     }
   }
+  >.reorder {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    >.mat-icon {
+      cursor: pointer;
+      font-size: 23px;
+      line-height: normal;
+      height: auto;
+      width: auto;
+      color: #404040;
+      opacity: 0.5;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
 }
 
 .new-block {

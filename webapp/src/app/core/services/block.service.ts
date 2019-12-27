@@ -11,6 +11,7 @@ import {
   SnippetBlock,
   GotoBlock,
   DoBlock,
+  OrderArrow,
 } from '@/core/types';
 
 @Injectable()
@@ -46,5 +47,15 @@ export class BlockService {
   fromObject(block: Block): Block {
     const newBlock: Block = this.getNewBlock(block.type);
     return Object.assign(newBlock, block);
+  }
+
+  reorder(direction: OrderArrow, index: number, array: any[]): void {
+    const offset: number = direction * 2 - 1; // [0, 1] -> [-1, 1]
+    const newIndex: number = index + offset;
+    if (newIndex >= 0 && newIndex < array.length) {
+      const stash: any = array[newIndex];
+      array[newIndex] = array[index];
+      array[index] = stash;
+    }
   }
 }

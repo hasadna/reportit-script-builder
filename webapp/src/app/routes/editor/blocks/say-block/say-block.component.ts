@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { SayBlock } from '@/core/types';
+import { SayBlock, OrderArrow } from '@/core/types';
 
 @Component({
   selector: 'say-block',
@@ -10,4 +10,13 @@ import { SayBlock } from '@/core/types';
 export class SayBlockComponent {
   @Input() block: SayBlock;
   @Output() remove = new EventEmitter<void>();
+  @Output() move = new EventEmitter<OrderArrow>();
+
+  up(): void {
+    this.move.emit(OrderArrow.Up);
+  }
+
+  down(): void {
+    this.move.emit(OrderArrow.Down);
+  }
 }

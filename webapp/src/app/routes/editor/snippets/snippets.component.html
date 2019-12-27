@@ -1,6 +1,10 @@
 <div class="component">
   <div class="blocks" *ngFor="let block of blockService.blockList; let i = index">
-    <snippet-block [block]="block" (remove)="removeSnippet(i)"></snippet-block>
+    <snippet-block
+      [block]="block"
+      (remove)="removeSnippet(i)"
+      (move)="reorderBlock($event, i)"
+    ></snippet-block>
   </div>
   <div class="new-block app-block">
     <div class="button">

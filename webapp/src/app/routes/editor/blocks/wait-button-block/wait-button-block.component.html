@@ -7,19 +7,29 @@
     </div>
     <button mat-flat-button color="primary" (click)="addButton()">Add Button</button>
     <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+    <div class="reorder">
+      <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
+      <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
+    </div>
   </mat-card>
-  <div class="buttons" *ngFor="let button of block.buttons; let i = index">
-    <mat-card class="app-block">
-      <div class="title">Button</div>
-      <div class="name text-field">
-        <div class="label">Show:</div>
-        <input [(ngModel)]="button.show">
-      </div>
-      <div class="name text-field">
-        <div class="label">Value:</div>
-        <input [(ngModel)]="button.value">
-      </div>
-      <div class="delete" (click)="deleteButton(i)"><mat-icon>delete</mat-icon></div>
-    </mat-card>
+  <div class="buttons block-line">
+    <div class="button" *ngFor="let button of block.buttons; let i = index">
+      <mat-card class="app-block">
+        <div class="title">Button</div>
+        <div class="name text-field">
+          <div class="label">Show:</div>
+          <input [(ngModel)]="button.show">
+        </div>
+        <div class="name text-field">
+          <div class="label">Value:</div>
+          <input [(ngModel)]="button.value">
+        </div>
+        <div class="delete" (click)="deleteButton(i)"><mat-icon>delete</mat-icon></div>
+        <div class="reorder">
+          <mat-icon (click)="upButton(i)">keyboard_arrow_up</mat-icon>
+          <mat-icon (click)="downButton(i)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
   </div>
 </div>

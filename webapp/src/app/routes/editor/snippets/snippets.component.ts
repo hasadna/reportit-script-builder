@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { BlockType, SnippetBlock } from '@/core/types';
+import { BlockType, SnippetBlock, OrderArrow } from '@/core/types';
 import { BlockService } from '@/core/services';
 
 @Component({
@@ -18,5 +18,9 @@ export class SnippetsComponent {
   addSnippet(): void {
     const snippetBlock = new SnippetBlock(BlockType.Snippet);
     this.blockService.blockList.push(snippetBlock);
+  }
+
+  reorderBlock(direction: OrderArrow, index: number): void {
+    this.blockService.reorder(direction, index, this.blockService.blockList);
   }
 }

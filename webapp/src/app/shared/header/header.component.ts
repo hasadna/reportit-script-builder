@@ -55,17 +55,19 @@ export class HeaderComponent implements OnDestroy {
     this.radio.valueChanges.subscribe(option => {
       this.getScript();
     });
-    this.getScript();
+    this.authService.onlineChanges.subscribe(isOnline => this.getScript());
   }
 
   getScript(): void {
-    this.loadingService.isLoading = true;
-    this.scriptSub = this.firebaseService.getScript(this.radio.value).subscribe(script => {
-      this.scriptSub.unsubscribe();
-      this.yamlService.yaml = script;
-      this.blockService.blockList = this.yamlService.fromYAML();
-      this.loadingService.isLoading = false;
-    });
+    if (this.authService.isOnline) {
+      this.loadingService.isLoading = true;
+      this.scriptSub = this.firebaseService.getScript(this.radio.value).subscribe(script => {
+        this.scriptSub.unsubscribe();
+        this.yamlService.yaml = script;
+        this.blockService.blockList = this.yamlService.fromYAML();
+        this.loadingService.isLoading = false;
+      });
+    }
   }
 
   save(): void {
