@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { BlockValidation, WaitInputBlock } from '@/core/types';
+import { BlockValidation, WaitInputBlock, OrderArrow } from '@/core/types';
 
 interface Checkbox {
   label: string;
@@ -18,6 +18,7 @@ export class WaitInputBlockComponent implements OnInit {
   label: string;
   @Input() block: WaitInputBlock;
   @Output() remove = new EventEmitter<void>();
+  @Output() move = new EventEmitter<OrderArrow>();
 
   ngOnInit() {
     if (this.block.validations.length > 0) {
@@ -58,5 +59,13 @@ export class WaitInputBlockComponent implements OnInit {
 
   validationToggle(): void {
     this.isValidationOpen = !this.isValidationOpen;
+  }
+
+  up(): void {
+    this.move.emit(OrderArrow.Up);
+  }
+
+  down(): void {
+    this.move.emit(OrderArrow.Down);
   }
 }

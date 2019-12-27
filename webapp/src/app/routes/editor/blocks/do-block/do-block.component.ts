@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { DoBlock } from '@/core/types';
+import { DoBlock, OrderArrow } from '@/core/types';
 
 @Component({
   selector: 'do-block',
@@ -10,4 +10,13 @@ import { DoBlock } from '@/core/types';
 export class DoBlockComponent {
   @Input() block: DoBlock;
   @Output() remove = new EventEmitter<void>();
+  @Output() move = new EventEmitter<OrderArrow>();
+
+  up(): void {
+    this.move.emit(OrderArrow.Up);
+  }
+
+  down(): void {
+    this.move.emit(OrderArrow.Down);
+  }
 }

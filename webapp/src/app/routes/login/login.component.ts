@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { AuthService } from '@/core/services';
+import { AuthService, LoadingService } from '@/core/services';
 
 @Component({
   selector: 'page-login',
@@ -13,8 +13,9 @@ export class LoginComponent implements OnDestroy {
   authSub = new Subscription();
 
   constructor(
-    public authService: AuthService,
-    public router: Router,
+    private authService: AuthService,
+    private router: Router,
+    public loadingService: LoadingService,
   ) {
     this.authSub = this.authService.onlineChanges.subscribe(isOnline => this.online(isOnline));
     if (this.authService.isInit) {
@@ -25,6 +26,8 @@ export class LoginComponent implements OnDestroy {
   private online(isOnline: boolean): void {
     if (isOnline) {
       this.router.navigate(['/']);
+    } else {
+      this.loadingService.isLoading = false;
     }
   }
 

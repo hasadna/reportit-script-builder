@@ -17,3 +17,8 @@ export enum BlockValidation {
   Date,
   Hour,
 }
+
+export enum OrderArrow {
+  Up,
+  Down,
+}

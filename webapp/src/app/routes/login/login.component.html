@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" *ngIf="!loadingService.isLoading">
   <button mat-button (click)="logInWithGoogle()">
     Log in with Google
   </button>

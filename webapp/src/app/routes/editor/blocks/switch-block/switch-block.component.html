@@ -7,6 +7,10 @@
     </div>
     <button mat-flat-button color="primary" (click)="addCase()">Add Case</button>
     <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+    <div class="reorder">
+      <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
+      <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
+    </div>
   </mat-card>
   <div class="cases block-line">
     <div class="case" *ngFor="let case of block.cases; let i = index">
@@ -20,6 +24,10 @@
           <mat-checkbox color="primary" [(ngModel)]="case.isDefault">Default</mat-checkbox>
         </div> 
         <div class="delete" (click)="deleteCase(i)"><mat-icon>delete</mat-icon></div>
+        <div class="reorder">
+          <mat-icon (click)="upCase(i)">keyboard_arrow_up</mat-icon>
+          <mat-icon (click)="downCase(i)">keyboard_arrow_down</mat-icon>
+        </div>
       </mat-card>
       <div class="steps">
         <block-list [blockList]="case.steps"></block-list>
