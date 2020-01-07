@@ -15,6 +15,9 @@ import {
   DoBlockComponent,
   WaitButtonBlockComponent,
   WaitButtonStepBlockComponent,
+  InfocardBlockComponent,
+  TaskTemplateBlockComponent,
+  OrganizationBlockComponent,
 } from './blocks';
 
 @NgModule({
@@ -35,6 +38,9 @@ import {
     BlockListComponent,
     SnippetsComponent,
     AddBlockComponent,
+    InfocardBlockComponent,
+    TaskTemplateBlockComponent,
+    OrganizationBlockComponent,
   ],
 })
 export class EditorModule { }

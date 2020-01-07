@@ -1,0 +1,111 @@
+<div class="component">
+  <mat-card class="app-block">
+    <div class="title">Organization</div>
+    <div class="message text-field">
+      <div class="label">Contact Person 1:</div>
+      <input [(ngModel)]="block.contactPerson1">
+    </div>
+    <div class="message text-field">
+      <div class="label">Contact Person 2:</div>
+      <input [(ngModel)]="block.contactPerson2">
+    </div>
+    <div class="message text-field">
+      <div class="label">Description:</div>
+      <input [(ngModel)]="block.description">
+    </div>
+    <div class="message text-field">
+      <div class="label">Email 1:</div>
+      <input [(ngModel)]="block.email1">
+    </div>
+    <div class="message text-field">
+      <div class="label">Email 2:</div>
+      <input [(ngModel)]="block.email2">
+    </div>
+    <div class="message text-field">
+      <div class="label">Fax:</div>
+      <input [(ngModel)]="block.fax">
+    </div>
+    <div class="message text-field">
+      <div class="label">Mail Address:</div>
+      <input [(ngModel)]="block.mailAddress">
+    </div>
+    <div class="message text-field">
+      <div class="label">Organization Name:</div>
+      <input [(ngModel)]="block.organizationName">
+    </div>
+    <div class="message text-field">
+      <div class="label">Organization Type:</div>
+      <input [(ngModel)]="block.organizationType">
+    </div>
+    <div class="message text-field">
+      <div class="label">Phone Number 1:</div>
+      <input [(ngModel)]="block.phoneNumber1">
+    </div>
+    <div class="message text-field">
+      <div class="label">Phone Number 2:</div>
+      <input [(ngModel)]="block.phoneNumber2">
+    </div>
+    <div class="message text-field">
+      <div class="label">Phone Response Details:</div>
+      <input [(ngModel)]="block.phoneResponseDetails">
+    </div>
+    <div class="message text-field">
+      <div class="label">Reception Details:</div>
+      <input [(ngModel)]="block.receptionDetails">
+    </div>
+    <div class="message text-field">
+      <div class="label">Scenarios Relevancy:</div>
+      <input [(ngModel)]="block.scenariosRelevancy">
+    </div>
+    <div class="message text-field">
+      <div class="label">Slug:</div>
+      <input [(ngModel)]="block.slug">
+    </div>
+    <div class="message text-field">
+      <div class="label">Website Label 1:</div>
+      <input [(ngModel)]="block.websiteLabel1">
+    </div>
+    <div class="message text-field">
+      <div class="label">Website Label 2:</div>
+      <input [(ngModel)]="block.websiteLabel2">
+    </div>
+    <div class="message text-field">
+      <div class="label">Website Url 1:</div>
+      <input [(ngModel)]="block.websiteUrl1">
+    </div>
+    <div class="message text-field">
+      <div class="label">Website Url 2:</div>
+      <input [(ngModel)]="block.websiteUrl2">
+    </div>
+    <button mat-flat-button color="primary" (click)="addScenario()">Add Scenario</button>
+    <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+    <div class="reorder">
+      <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
+      <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
+    </div>
+  </mat-card>
+  <div class="scenarios block-line">
+    <div class="scenario" *ngFor="let scenario of block.scenarios; let i = index">
+      <mat-card class="app-block">
+        <div class="title">Scenario</div>
+        <div class="name text-field">
+          <div class="label">offender:</div>
+          <input [(ngModel)]="scenario.offender">
+        </div>
+        <div class="name text-field">
+          <div class="label">event location:</div>
+          <input [(ngModel)]="scenario.eventlocation">
+        </div>
+        <div class="name text-field">
+          <div class="label">complaint type:</div>
+          <input [(ngModel)]="scenario.complainttype">
+        </div>
+        <div class="delete" (click)="deleteScenario(i)"><mat-icon>delete</mat-icon></div>
+        <div class="reorder">
+          <mat-icon (click)="upScenario(i)">keyboard_arrow_up</mat-icon>
+          <mat-icon (click)="downScenario(i)">keyboard_arrow_down</mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

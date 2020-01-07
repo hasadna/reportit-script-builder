@@ -48,6 +48,24 @@
       (remove)="removeBlock(i)"
       (move)="reorderBlock($event, i)"
     ></do-block>
+    <infocard-block
+      *ngIf="block.isInfocardBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
+    ></infocard-block>
+    <tasktemplate-block
+      *ngIf="block.isTaskTemplateBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
+    ></tasktemplate-block>
+    <organization-block
+      *ngIf="block.isOrganizationBlock()"
+      [block]="block"
+      (remove)="removeBlock(i)"
+      (move)="reorderBlock($event, i)"
+    ></organization-block>
   </div>
   <add-block (add)="addBlock($event)"></add-block>
 </div>

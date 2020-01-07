@@ -1,5 +1,5 @@
 import { BlockType, BlockValidation } from './enum';
-import { Case, WaitButton, WaitStepButton } from './interfaces';
+import { Case, WaitButton, WaitStepButton, Scenario } from './interfaces';
 
 export class Block {
   type: BlockType;
@@ -46,6 +46,18 @@ export class Block {
 
   isDoBlock(): boolean {
     return this.type === BlockType.Do;
+  }
+
+  isInfocardBlock(): boolean {
+    return this.type === BlockType.Infocard;
+  }
+
+  isOrganizationBlock(): boolean {
+    return this.type === BlockType.Organization;
+  }
+
+  isTaskTemplateBlock(): boolean {
+    return this.type === BlockType.TaskTemplate;
   }
 }
 
@@ -108,4 +120,40 @@ export class DoBlock extends Block {
   cmd: string;
   params: string;
   variable: string;
+}
+
+export class InfocardBlock extends Block {
+  title: string;
+  content: string;
+  slug: string;
+}
+
+export class TaskTemplateBlock extends Block {
+  title: string;
+  description: string;
+  infocardSlugs: string;
+  slug: string;
+}
+
+export class OrganizationBlock extends Block {
+  contactPerson1: string;
+  contactPerson2: string;
+  description: string;
+  email1: string;
+  email2: string;
+  fax: string;
+  mailAddress: string;
+  organizationName: string;
+  organizationType: string;
+  phoneNumber1: string;
+  phoneNumber2: string;
+  phoneResponseDetails: string;
+  receptionDetails: string;
+  scenariosRelevancy: string;
+  slug: string;
+  websiteLabel1: string;
+  websiteLabel2: string;
+  websiteUrl1: string;
+  websiteUrl2: string;
+  scenarios: Scenario[] = [];
 }

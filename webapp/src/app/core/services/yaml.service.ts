@@ -12,6 +12,9 @@ import {
   SnippetBlock,
   GotoBlock,
   DoBlock,
+  InfocardBlock,
+  TaskTemplateBlock,
+  OrganizationBlock,
   Case,
   WaitStepButton,
 } from '@/core/types';
@@ -24,6 +27,10 @@ import {
   ChatWaitVar,
   ChatWaitButton,
   ChatWaitButtonStep,
+  ChatInfocard,
+  ChatTaskTemplate,
+  ChatOrganization,
+  ChatScenario,
   Steps,
   Snippet,
   SwitchCase,
@@ -199,6 +206,72 @@ export class YamlService {
           }
           yaml.steps.push(chatDo);
           break;
+        case BlockType.Infocard:
+          const infocardBlock = block as InfocardBlock;
+          const chatInfocard: ChatInfocard = {
+            infocard: {
+              title: infocardBlock.title,
+              content: infocardBlock.content,
+              slug: infocardBlock.slug,
+            },
+          };
+          yaml.steps.push(chatInfocard);
+          break;
+        case BlockType.TaskTemplate:
+          const taskTemplateBlock = block as TaskTemplateBlock;
+          const chatTaskTemplate: ChatTaskTemplate = {
+            tasktemplate: {
+              title: taskTemplateBlock.title,
+              description: taskTemplateBlock.description,
+              infocard_slugs: taskTemplateBlock.infocardSlugs,
+              slug: taskTemplateBlock.slug,
+            },
+          };
+          yaml.steps.push(chatTaskTemplate);
+          break;
+        case BlockType.Organization:
+          const organizationBlock = block as OrganizationBlock;
+          const chatOrganization: ChatOrganization = {
+            organization: {
+              contact_person1: organizationBlock.contactPerson1,
+              contact_person2: organizationBlock.contactPerson2,
+              description: organizationBlock.description,
+              email1: organizationBlock.email1,
+              email2: organizationBlock.email2,
+              fax: organizationBlock.fax,
+              mail_address: organizationBlock.mailAddress,
+              organization_name: organizationBlock.organizationName,
+              organization_type: organizationBlock.organizationType,
+              phone_number1: organizationBlock.phoneNumber1,
+              phone_number2: organizationBlock.phoneNumber2,
+              phone_response_details: organizationBlock.phoneResponseDetails,
+              reception_details: organizationBlock.receptionDetails,
+              scenarios_relevancy: organizationBlock.scenariosRelevancy,
+              slug: organizationBlock.slug,
+              website_label1: organizationBlock.websiteLabel1,
+              website_label2: organizationBlock.websiteLabel2,
+              website_url1: organizationBlock.websiteUrl1,
+              website_url2: organizationBlock.websiteUrl2,
+            },
+          };
+          if (organizationBlock.scenarios) {
+            chatOrganization.organization.scenarios = [];
+            for (const scenario of organizationBlock.scenarios) {
+              const chatScenario: ChatScenario = {};
+              if (scenario.offender) {
+                chatScenario.offender = scenario.offender;
+              }
+              if (scenario.complainttype) {
+                chatScenario.complainttype = scenario.complainttype;
+              }
+              if (scenario.eventlocation) {
+                chatScenario.eventlocation = scenario.eventlocation;
+              }
+              chatOrganization.organization.scenarios.push(chatScenario);
+            }
+          }
+          yaml.steps.push(chatOrganization);
+          break;
         default: throw new Error('Block type not found');
       }
     }
@@ -316,6 +389,49 @@ export class YamlService {
           } else {
             throw new Error('Invalid wait');
           }
+          break;
+        case 'infocard':
+          const infocardBlock = new InfocardBlock(BlockType.Infocard);
+          const chatInfocard = step as ChatInfocard;
+          infocardBlock.title = chatInfocard.infocard.title;
+          infocardBlock.content = chatInfocard.infocard.content;
+          infocardBlock.slug = chatInfocard.infocard.slug;
+          blockList.push(infocardBlock);
+          break;
+        case 'tasktemplate':
+          const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate);
+          const chatTaskTemplate = step as ChatTaskTemplate;
+          taskTemplateBlock.title = chatTaskTemplate.tasktemplate.title;
+          taskTemplateBlock.description = chatTaskTemplate.tasktemplate.description;
+          taskTemplateBlock.infocardSlugs = chatTaskTemplate.tasktemplate.infocard_slugs;
+          taskTemplateBlock.slug = chatTaskTemplate.tasktemplate.slug;
+          blockList.push(taskTemplateBlock);
+          break;
+        case 'organization':
+          const organizationBlock = new OrganizationBlock(BlockType.Organization);
+          const chatOrganization = step as ChatOrganization;
+          organizationBlock.contactPerson1 = chatOrganization.organization.contact_person1;
+          organizationBlock.contactPerson2 = chatOrganization.organization.contact_person2;
+          organizationBlock.description = chatOrganization.organization.description;
+          organizationBlock.email1 = chatOrganization.organization.email1;
+          organizationBlock.email2 = chatOrganization.organization.email2;
+          organizationBlock.fax = chatOrganization.organization.fax;
+          organizationBlock.mailAddress = chatOrganization.organization.mail_address;
+          organizationBlock.organizationName = chatOrganization.organization.organization_name;
+          organizationBlock.organizationType = chatOrganization.organization.organization_type;
+          organizationBlock.phoneNumber1 = chatOrganization.organization.phone_number1;
+          organizationBlock.phoneNumber2 = chatOrganization.organization.phone_number2;
+          organizationBlock.phoneResponseDetails = chatOrganization.organization
+            .phone_response_details;
+          organizationBlock.receptionDetails = chatOrganization.organization.reception_details;
+          organizationBlock.scenariosRelevancy = chatOrganization.organization.scenarios_relevancy;
+          organizationBlock.slug = chatOrganization.organization.slug;
+          organizationBlock.websiteLabel1 = chatOrganization.organization.website_label1;
+          organizationBlock.websiteLabel2 = chatOrganization.organization.website_label2;
+          organizationBlock.websiteUrl1 = chatOrganization.organization.website_url1;
+          organizationBlock.websiteUrl2 = chatOrganization.organization.website_url2;
+          organizationBlock.scenarios = chatOrganization.organization.scenarios;
+          blockList.push(organizationBlock);
           break;
         default: throw new Error('Block key not found');
       }

@@ -1,0 +1,24 @@
+<mat-card class="component app-block">
+  <div class="title">Task Template</div>
+  <div class="message text-field">
+    <div class="label">Title:</div>
+    <input [(ngModel)]="block.title">
+  </div>
+  <div class="message text-field">
+    <div class="label">Description:</div>
+    <input [(ngModel)]="block.description">
+  </div>
+  <div class="message text-field">
+    <div class="label">Infocard slugs:</div>
+    <input [(ngModel)]="block.infocardSlugs">
+  </div>
+  <div class="message text-field">
+    <div class="label">Slug:</div>
+    <input [(ngModel)]="block.slug">
+  </div>
+  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="reorder">
+    <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
+    <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
+  </div>
+</mat-card>

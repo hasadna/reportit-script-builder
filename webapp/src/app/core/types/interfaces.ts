@@ -21,3 +21,9 @@ export interface WaitStepButton {
   show: string;
   steps: Block[];
 }
+
+export interface Scenario {
+  offender?: string;
+  eventlocation?: string;
+  complainttype?: string;
+}
