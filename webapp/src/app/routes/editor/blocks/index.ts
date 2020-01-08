@@ -6,4 +6,3 @@ export * from './wait-button-step-block';
 export * from './snippet-block';
 export * from './goto-block';
 export * from './do-block';
-export * from './agent';

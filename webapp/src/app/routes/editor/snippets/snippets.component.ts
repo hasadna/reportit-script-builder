@@ -9,7 +9,7 @@ import { BlockService } from '@/core/services';
   styleUrls: ['./snippets.component.scss'],
 })
 export class SnippetsComponent {
-  constructor(private blockService: BlockService) { }
+  constructor(public blockService: BlockService) { }
 
   removeSnippet(index: number): void {
     this.blockService.blockList.splice(index, 1);

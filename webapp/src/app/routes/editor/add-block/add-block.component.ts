@@ -17,9 +17,6 @@ export class AddBlockComponent {
     { label: 'Switch', type: BlockType.Switch },
     { label: 'Go To', type: BlockType.Goto },
     { label: 'Do', type: BlockType.Do },
-    { label: 'Infocard', type: BlockType.Infocard },
-    { label: 'Task Template', type: BlockType.TaskTemplate },
-    { label: 'Organization', type: BlockType.Organization },
   ];
   blockTypeSelected: BlockType = BlockType.Say;
   @Output() add = new EventEmitter<BlockType>();

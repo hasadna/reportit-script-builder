@@ -1,0 +1,14 @@
+<div class="component">
+  <div class="blocks" *ngFor="let block of yamlService.organizations; let i = index">
+    <organization-block
+      [block]="block"
+      (remove)="removeOrganization(i)"
+      (move)="reorderBlock($event, i)"
+    ></organization-block>
+  </div>
+  <div class="new-block app-block">
+    <div class="button">
+      <button mat-flat-button color="primary" (click)="addOrganization()">Add Organization</button>
+    </div>
+  </div>
+</div>

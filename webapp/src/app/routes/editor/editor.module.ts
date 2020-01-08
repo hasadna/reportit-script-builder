@@ -15,10 +15,15 @@ import {
   DoBlockComponent,
   WaitButtonBlockComponent,
   WaitButtonStepBlockComponent,
-  InfocardBlockComponent,
-  TaskTemplateBlockComponent,
-  OrganizationBlockComponent,
 } from './blocks';
+import {
+  InfocardBlockComponent,
+  InfocardListComponent,
+  TaskTemplateBlockComponent,
+  TaskTemplateListComponent,
+  OrganizationBlockComponent,
+  OrganizationListComponent,
+} from './meta-blocks';
 
 @NgModule({
   imports: [
@@ -39,8 +44,11 @@ import {
     SnippetsComponent,
     AddBlockComponent,
     InfocardBlockComponent,
+    InfocardListComponent,
     TaskTemplateBlockComponent,
+    TaskTemplateListComponent,
     OrganizationBlockComponent,
+    OrganizationListComponent,
   ],
 })
 export class EditorModule { }

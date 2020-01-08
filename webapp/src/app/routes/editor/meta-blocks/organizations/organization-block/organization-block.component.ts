@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { OrganizationBlock, OrderArrow, Scenario } from '@/core/types';
+import { OrganizationBlock, OrderArrow } from '@/core/types';
 import { BlockService } from '@/core/services';
 
 @Component({
@@ -32,12 +32,7 @@ export class OrganizationBlockComponent {
   }
 
   addScenario(): void {
-    const button: Scenario = {
-      offender: '',
-      eventlocation: '',
-      complainttype: '',
-    };
-    this.block.scenarios.unshift(button);
+    this.block.scenarios.unshift({ json: '{}' });
   }
 
   deleteScenario(index: number): void {

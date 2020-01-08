@@ -1,6 +1,9 @@
 export interface Yaml {
   description: string;
   name: string;
+  infocards?: ChatInfocard[];
+  organizations?: ChatOrganization[];
+  taskTemplates?: ChatTaskTemplate[];
   snippets: Snippet[];
 }
 
@@ -12,10 +15,7 @@ export interface Steps {
     ChatWaitVar |
     ChatWaitButton |
     ChatWaitButtonStep |
-    ChatSwitch |
-    ChatInfocard |
-    ChatTaskTemplate |
-    ChatOrganization
+    ChatSwitch
   )[];
 }
 
@@ -85,49 +85,41 @@ export interface SwitchCase extends Steps {
 }
 
 export interface ChatInfocard {
-  infocard: {
-    title: string;
-    content: string;
-    slug: string;
-  };
+  title: string;
+  content: string;
+  slug: string;
 }
 
 export interface ChatTaskTemplate {
-  tasktemplate: {
-    title: string;
-    description: string;
-    infocard_slugs: string;
-    slug: string;
-  };
+  title: string;
+  description: string;
+  infocardSlugs: string;
+  slug: string;
 }
 
 export interface ChatScenario {
-  offender?: string;
-  eventlocation?: string;
-  complainttype?: string;
+  json: string;
 }
 
 export interface ChatOrganization {
-  organization: {
-    contact_person1: string;
-    contact_person2: string;
-    description: string;
-    email1: string;
-    email2: string;
-    fax: string;
-    mail_address: string;
-    organization_name: string;
-    organization_type: string;
-    phone_number1: string;
-    phone_number2: string;
-    phone_response_details: string;
-    reception_details: string;
-    scenarios_relevancy: string;
-    slug: string;
-    website_label1: string;
-    website_label2: string;
-    website_url1: string;
-    website_url2: string;
-    scenarios?: ChatScenario[];
-  };
+  contactPerson1: string;
+  contactPerson2: string;
+  description: string;
+  email1: string;
+  email2: string;
+  fax: string;
+  mailAddress: string;
+  organizationName: string;
+  organizationType: string;
+  phoneNumber1: string;
+  phoneNumber2: string;
+  phoneResponseDetails: string;
+  receptionDetails: string;
+  scenariosRelevancy: string;
+  slug: string;
+  websiteLabel1: string;
+  websiteLabel2: string;
+  websiteUrl1: string;
+  websiteUrl2: string;
+  scenarios?: ChatScenario[];
 }

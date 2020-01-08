@@ -1,9 +1,10 @@
 @import 'styles/app-block';
 
 .component {
+  button {
+    width: 100%;
+  }
   >.app-block {
-    >button {
-      margin-top: 10px;
-    }
+    border: 2px solid #03A9F4;
   }
 }

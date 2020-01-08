@@ -1,14 +1,17 @@
 <div class="page" *ngIf="!loadingService.isLoading">
   <mat-card class="app-block">
-    <div class="title">Snippets</div>
-    <div class="text-field">
-      <div class="label">Description:</div>
-      <input [(ngModel)]="yamlService.description">
-    </div>
+    <div class="title">Chatbot script</div>
     <div class="text-field">
       <div class="label">Name:</div>
       <input [(ngModel)]="yamlService.name">
     </div>
+    <div class="text-field">
+      <div class="label">Description:</div>
+      <input [(ngModel)]="yamlService.description">
+    </div>
   </mat-card>
+  <infocard-list></infocard-list>
+  <organization-list></organization-list>
+  <task-template-list></task-template-list>
   <snippets></snippets>
 </div>

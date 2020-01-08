@@ -89,16 +89,8 @@
       <mat-card class="app-block">
         <div class="title">Scenario</div>
         <div class="name text-field">
-          <div class="label">offender:</div>
-          <input [(ngModel)]="scenario.offender">
-        </div>
-        <div class="name text-field">
-          <div class="label">event location:</div>
-          <input [(ngModel)]="scenario.eventlocation">
-        </div>
-        <div class="name text-field">
-          <div class="label">complaint type:</div>
-          <input [(ngModel)]="scenario.complainttype">
+          <div class="label">json:</div>
+          <textarea autosize [(ngModel)]="scenario.json"></textarea>
         </div>
         <div class="delete" (click)="deleteScenario(i)"><mat-icon>delete</mat-icon></div>
         <div class="reorder">

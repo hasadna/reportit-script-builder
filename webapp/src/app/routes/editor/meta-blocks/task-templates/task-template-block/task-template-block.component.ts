@@ -3,9 +3,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskTemplateBlock, OrderArrow } from '@/core/types';
 
 @Component({
-  selector: 'tasktemplate-block',
-  templateUrl: './tasktemplate-block.component.html',
-  styleUrls: ['./tasktemplate-block.component.scss'],
+  selector: 'task-template-block',
+  templateUrl: './task-template-block.component.html',
+  styleUrls: ['./task-template-block.component.scss'],
 })
 export class TaskTemplateBlockComponent {
   @Input() block: TaskTemplateBlock;

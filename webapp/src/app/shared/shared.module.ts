@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AutosizeModule } from 'ngx-autosize';
 
 import { MaterialModule } from '@/import';
 import { HeaderComponent } from './header';
@@ -19,6 +20,7 @@ const ExportModules = [
   HttpClientModule,
   CommonModule,
   MaterialModule,
+  AutosizeModule,
 ];
 
 @NgModule({

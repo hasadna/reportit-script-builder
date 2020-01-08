@@ -23,7 +23,5 @@ export interface WaitStepButton {
 }
 
 export interface Scenario {
-  offender?: string;
-  eventlocation?: string;
-  complainttype?: string;
+  json: string;
 }

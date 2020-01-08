@@ -47,18 +47,6 @@ export class Block {
   isDoBlock(): boolean {
     return this.type === BlockType.Do;
   }
-
-  isInfocardBlock(): boolean {
-    return this.type === BlockType.Infocard;
-  }
-
-  isOrganizationBlock(): boolean {
-    return this.type === BlockType.Organization;
-  }
-
-  isTaskTemplateBlock(): boolean {
-    return this.type === BlockType.TaskTemplate;
-  }
 }
 
 export class SayBlock extends Block {
