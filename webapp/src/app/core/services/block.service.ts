@@ -11,6 +11,9 @@ import {
   SnippetBlock,
   GotoBlock,
   DoBlock,
+  InfocardBlock,
+  TaskTemplateBlock,
+  OrganizationBlock,
   OrderArrow,
 } from '@/core/types';
 
@@ -28,7 +31,10 @@ export class BlockService {
     GotoBlock |
     WaitButtonBlock |
     WaitButtonStepBlock |
-    DoBlock {
+    DoBlock |
+    InfocardBlock |
+    OrganizationBlock |
+    TaskTemplateBlock {
     switch (blockType) {
       case BlockType.Say: return new SayBlock(blockType);
       case BlockType.WaitDate:
@@ -39,6 +45,9 @@ export class BlockService {
       case BlockType.WaitButton: return new WaitButtonBlock(blockType);
       case BlockType.WaitButtonStep: return new WaitButtonStepBlock(blockType);
       case BlockType.Do: return new DoBlock(blockType);
+      case BlockType.Infocard: return new InfocardBlock(blockType);
+      case BlockType.TaskTemplate: return new TaskTemplateBlock(blockType);
+      case BlockType.Organization: return new OrganizationBlock(blockType);
 
       default: throw new Error('Block type not found');
     }

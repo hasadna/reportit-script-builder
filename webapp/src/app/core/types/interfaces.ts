@@ -21,3 +21,7 @@ export interface WaitStepButton {
   show: string;
   steps: Block[];
 }
+
+export interface Scenario {
+  json: string;
+}

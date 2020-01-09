@@ -1,9 +1,14 @@
 @import 'styles/app-block';
 
 .component {
-  >.app-block {
+  .app-block {
     >button {
       margin-top: 10px;
+    }
+    >.text-field {
+      >textarea {
+        direction: ltr;
+      }
     }
   }
 }

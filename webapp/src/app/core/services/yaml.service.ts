@@ -12,6 +12,9 @@ import {
   SnippetBlock,
   GotoBlock,
   DoBlock,
+  InfocardBlock,
+  TaskTemplateBlock,
+  OrganizationBlock,
   Case,
   WaitStepButton,
 } from '@/core/types';
@@ -24,6 +27,9 @@ import {
   ChatWaitVar,
   ChatWaitButton,
   ChatWaitButtonStep,
+  ChatInfocard,
+  ChatTaskTemplate,
+  ChatOrganization,
   Steps,
   Snippet,
   SwitchCase,
@@ -46,6 +52,9 @@ export class YamlService {
   description: string = '';
   name: string = '';
   yaml: string;
+  infocards: Block[];
+  organizations: Block[];
+  taskTemplates: Block[];
 
   constructor(
     private blockService: BlockService,
@@ -69,6 +78,9 @@ export class YamlService {
       const yaml: Yaml = yamlList[0];
       this.description = yaml.description;
       this.name = yaml.name;
+      this.infocards = this.getInfocards(yaml);
+      this.organizations = this.getOrganization(yaml);
+      this.taskTemplates = this.getTaskTemplates(yaml);
       return this.yamlToBlocks(yaml);
     }
   }
@@ -78,6 +90,9 @@ export class YamlService {
     const yamlList: Yaml[] = [{
       description: this.description,
       name: this.name,
+      infocards: this.getYamlInfocards(this.infocards),
+      organizations: this.getYamlOrganizations(this.organizations),
+      taskTemplates: this.getYamlTaskTemplates(this.taskTemplates),
       snippets: this.snippetsToYaml(this.blockService.blockList),
     }];
     this.yaml = YAML.stringify(yamlList);
@@ -321,5 +336,133 @@ export class YamlService {
       }
     }
     return blockList;
+  }
+
+  // Converts YAML infocards to app blocks
+  getInfocards(yaml: Yaml): Block[] {
+    const blockList: Block[] = [];
+    if (yaml.infocards) {
+      for (const infocard of yaml.infocards) {
+        const infocardBlock = new InfocardBlock(BlockType.Infocard);
+        infocardBlock.title = infocard.title;
+        infocardBlock.content = infocard.content;
+        infocardBlock.slug = infocard.slug;
+        blockList.push(infocardBlock);
+      }
+    }
+    return blockList;
+  }
+
+  // Converts YAML organizations to app blocks
+  getOrganization(yaml: Yaml): Block[] {
+    const blockList: Block[] = [];
+    if (yaml.organizations) {
+      for (const organization of yaml.organizations) {
+        const organizationBlock = new OrganizationBlock(BlockType.Organization);
+        organizationBlock.contactPerson1 = organization.contactPerson1;
+        organizationBlock.contactPerson2 = organization.contactPerson2;
+        organizationBlock.description = organization.description;
+        organizationBlock.email1 = organization.email1;
+        organizationBlock.email2 = organization.email2;
+        organizationBlock.fax = organization.fax;
+        organizationBlock.mailAddress = organization.mailAddress;
+        organizationBlock.organizationName = organization.organizationName;
+        organizationBlock.organizationType = organization.organizationType;
+        organizationBlock.phoneNumber1 = organization.phoneNumber1;
+        organizationBlock.phoneNumber2 = organization.phoneNumber2;
+        organizationBlock.phoneResponseDetails = organization.phoneResponseDetails;
+        organizationBlock.receptionDetails = organization.receptionDetails;
+        organizationBlock.scenariosRelevancy = organization.scenariosRelevancy;
+        organizationBlock.slug = organization.slug;
+        organizationBlock.websiteLabel1 = organization.websiteLabel1;
+        organizationBlock.websiteLabel2 = organization.websiteLabel2;
+        organizationBlock.websiteUrl1 = organization.websiteUrl1;
+        organizationBlock.websiteUrl2 = organization.websiteUrl2;
+        organizationBlock.scenarios = organization.scenarios;
+        blockList.push(organizationBlock);
+      }
+    }
+    return blockList;
+  }
+
+  // Converts YAML task templates to app blocks
+  getTaskTemplates(yaml: Yaml): Block[] {
+    const blockList: Block[] = [];
+    if (yaml.taskTemplates) {
+      for (const taskTemplate of yaml.taskTemplates) {
+        const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate);
+        taskTemplateBlock.title = taskTemplate.title;
+        taskTemplateBlock.description = taskTemplate.description;
+        taskTemplateBlock.infocardSlugs = taskTemplate.infocardSlugs;
+        taskTemplateBlock.slug = taskTemplate.slug;
+        blockList.push(taskTemplateBlock);
+      }
+    }
+    return blockList;
+  }
+
+  // Converts block infocards to yaml infocards
+  getYamlInfocards(blockList: Block[]): ChatInfocard[] {
+    const chatInfocards: ChatInfocard[] = [];
+    for (const block of blockList) {
+      const infocardBlock = block as InfocardBlock;
+      const chatInfocard: ChatInfocard = {
+        title: infocardBlock.title,
+        content: infocardBlock.content,
+        slug: infocardBlock.slug,
+      };
+      chatInfocards.push(chatInfocard);
+    }
+    return chatInfocards;
+  }
+
+  // Converts block task templates to yaml task templates
+  getYamlTaskTemplates(blockList: Block[]): ChatTaskTemplate[] {
+    const chatTaskTemplates: ChatTaskTemplate[] = [];
+    for (const block of blockList) {
+      const taskTemplateBlock = block as TaskTemplateBlock;
+      const chatTaskTemplate: ChatTaskTemplate = {
+        title: taskTemplateBlock.title,
+        description: taskTemplateBlock.description,
+        infocardSlugs: taskTemplateBlock.infocardSlugs,
+        slug: taskTemplateBlock.slug,
+      };
+      chatTaskTemplates.push(chatTaskTemplate);
+    }
+    return chatTaskTemplates;
+  }
+
+  // Converts block organizations to yaml organizations
+  getYamlOrganizations(blockList: Block[]): ChatOrganization[] {
+    const chatOrganizations: ChatOrganization[] = [];
+    for (const block of blockList) {
+      const organizationBlock = block as OrganizationBlock;
+      const chatOrganization: ChatOrganization = {
+        contactPerson1: organizationBlock.contactPerson1,
+        contactPerson2: organizationBlock.contactPerson2,
+        description: organizationBlock.description,
+        email1: organizationBlock.email1,
+        email2: organizationBlock.email2,
+        fax: organizationBlock.fax,
+        mailAddress: organizationBlock.mailAddress,
+        organizationName: organizationBlock.organizationName,
+        organizationType: organizationBlock.organizationType,
+        phoneNumber1: organizationBlock.phoneNumber1,
+        phoneNumber2: organizationBlock.phoneNumber2,
+        phoneResponseDetails: organizationBlock.phoneResponseDetails,
+        receptionDetails: organizationBlock.receptionDetails,
+        scenariosRelevancy: organizationBlock.scenariosRelevancy,
+        slug: organizationBlock.slug,
+        websiteLabel1: organizationBlock.websiteLabel1,
+        websiteLabel2: organizationBlock.websiteLabel2,
+        websiteUrl1: organizationBlock.websiteUrl1,
+        websiteUrl2: organizationBlock.websiteUrl2,
+      };
+      if (organizationBlock.scenarios && organizationBlock.scenarios.length > 0) {
+        chatOrganization.scenarios = organizationBlock.scenarios;
+      }
+      chatOrganizations.push(chatOrganization);
+    }
+    return chatOrganizations;
   }
 }

@@ -8,6 +8,9 @@ export enum BlockType {
   Snippet,
   Goto,
   Do,
+  Infocard,
+  Organization,
+  TaskTemplate,
 }
 
 export enum BlockValidation {

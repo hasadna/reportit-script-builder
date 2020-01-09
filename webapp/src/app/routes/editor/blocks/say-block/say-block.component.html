@@ -2,11 +2,7 @@
   <div class="title">Say</div>
   <div class="message text-field">
     <div class="label">Message:</div>
-    <textarea
-      matTextareaAutosize
-      matAutosizeMinRows="2"
-      [(ngModel)]="block.say"
-    ></textarea>
+    <textarea autosize [(ngModel)]="block.say"></textarea>
   </div>
   <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">

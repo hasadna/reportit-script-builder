@@ -1,0 +1,14 @@
+<div class="component">
+  <div class="blocks" *ngFor="let block of yamlService.infocards; let i = index">
+    <infocard-block
+      [block]="block"
+      (remove)="removeInfocard(i)"
+      (move)="reorderBlock($event, i)"
+    ></infocard-block>
+  </div>
+  <div class="new-block app-block">
+    <div class="button">
+      <button mat-flat-button color="primary" (click)="addInfocard()">Add Infocard</button>
+    </div>
+  </div>
+</div>

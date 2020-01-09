@@ -1,6 +1,9 @@
 export interface Yaml {
   description: string;
   name: string;
+  infocards?: ChatInfocard[];
+  organizations?: ChatOrganization[];
+  taskTemplates?: ChatTaskTemplate[];
   snippets: Snippet[];
 }
 
@@ -79,4 +82,44 @@ export interface ChatSwitch {
 export interface SwitchCase extends Steps {
   match?: string;
   default?: boolean;
+}
+
+export interface ChatInfocard {
+  title: string;
+  content: string;
+  slug: string;
+}
+
+export interface ChatTaskTemplate {
+  title: string;
+  description: string;
+  infocardSlugs: string;
+  slug: string;
+}
+
+export interface ChatScenario {
+  json: string;
+}
+
+export interface ChatOrganization {
+  contactPerson1: string;
+  contactPerson2: string;
+  description: string;
+  email1: string;
+  email2: string;
+  fax: string;
+  mailAddress: string;
+  organizationName: string;
+  organizationType: string;
+  phoneNumber1: string;
+  phoneNumber2: string;
+  phoneResponseDetails: string;
+  receptionDetails: string;
+  scenariosRelevancy: string;
+  slug: string;
+  websiteLabel1: string;
+  websiteLabel2: string;
+  websiteUrl1: string;
+  websiteUrl2: string;
+  scenarios?: ChatScenario[];
 }

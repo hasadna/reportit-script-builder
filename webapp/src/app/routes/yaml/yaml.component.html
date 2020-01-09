@@ -1,9 +1,9 @@
 <div class="page">
   <div class="editor" *ngIf="!loadingService.isLoading">
     <textarea
-      matTextareaAutosize
-      matAutosizeMinRows="3"
+      autosize
       [(ngModel)]="yamlService.yaml"
+      spellcheck="false"
     ></textarea>
   </div>
 </div>
