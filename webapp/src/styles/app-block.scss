@@ -27,7 +27,6 @@
       padding: 2px 5px;
     }
     >textarea {
-      resize: none;
       $padding: 5px;
       padding: $padding;
       width: calc(100% - 2 * #{$padding});

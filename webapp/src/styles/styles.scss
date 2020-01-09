@@ -8,5 +8,8 @@ html {
     margin: 0;
     font-family: Arial;
     background-color: #f4f4f4;
+    textarea {
+      resize: none;
+    }
   }
 }
