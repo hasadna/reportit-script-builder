@@ -1,1 +1,31 @@
 @import 'styles/app-block';
+
+.app-block {
+  >.goto-select {
+    margin-top: 15px;
+    position: relative;
+    >.float-name {
+      height: 30px;
+      width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    >.mat-snippet-select {
+      position: absolute;
+      top: -20px;
+    }
+  }
+  >.error {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+  }
+}
+::ng-deep {
+  .goto-select {
+    .mat-form-field-infix {
+      width: 340px;
+    }
+  }
+}

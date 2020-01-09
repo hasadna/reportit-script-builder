@@ -1,10 +1,24 @@
 <mat-card class="component app-block">
-  <div class="title">Go To</div>
-  <div class="message text-field">
-    <div class="label">Snippet name:</div>
-    <input [(ngModel)]="block.goto">
+  <div class="title" #goto>Go To</div>
+  <div class="goto-select">
+    <div class="float-name">{{ snippet.name }}</div>
+    <div class="mat-snippet-select">
+      <mat-form-field>
+        <mat-select>
+          <mat-option
+            *ngFor="let block of this.blockService.blockList"
+            (click)="select(block)"
+          >
+            {{ block.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
-  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="error" *ngIf="isEnd">
+    No snippet found
+  </div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

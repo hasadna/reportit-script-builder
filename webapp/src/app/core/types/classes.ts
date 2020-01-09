@@ -1,3 +1,4 @@
+import { randstr64 } from 'rndmjs';
 import { BlockType, BlockValidation } from './enum';
 import { Case, WaitButton, WaitStepButton, Scenario } from './interfaces';
 
@@ -102,6 +103,9 @@ export class SnippetBlock extends Block {
 
 export class GotoBlock extends Block {
   goto: string;
+  element: HTMLDivElement;
+  id: string = randstr64(20);
+  update: () => void;
 }
 
 export class DoBlock extends Block {

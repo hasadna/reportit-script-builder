@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import {
   BlockType,
@@ -22,6 +23,8 @@ export class BlockService {
   description: string = '';
   name: string = '';
   blockList: Block[] = [];
+  gotoBlockMap: { [id: string]: GotoBlock } = {};
+  gotoChanges = new Subject<void>();
 
   getNewBlock(blockType: BlockType):
     SayBlock |
