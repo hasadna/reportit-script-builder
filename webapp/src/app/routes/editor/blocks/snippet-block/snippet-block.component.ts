@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { SnippetBlock, OrderArrow, GotoBlock } from '@/core/types';
-import { BlockService } from '@/core/services';
+import { BlockService, NotificationService } from '@/core/services';
 
 @Component({
   selector: 'snippet-block',
@@ -19,7 +19,10 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
   @Output() remove = new EventEmitter<void>();
   @Output() move = new EventEmitter<OrderArrow>();
 
-  constructor(private blockService: BlockService) {
+  constructor(
+    private blockService: BlockService,
+    private notificationService: NotificationService,
+  ) {
     this.gotoSub = this.blockService.gotoChanges
       .pipe(debounceTime(0)) // ExpressionChangedAfterItHasBeenCheckedError fix
       .subscribe(() => {
@@ -59,7 +62,7 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
 
   removeSelf(): void {
     if (this.gotoBlockList.length > 0) {
-      alert('Please change all goto, which point to the snippet');
+      this.notificationService.warning('Please change all goto, which point to the snippet');
     } else {
       this.remove.emit();
       for (const gotoBlock of this.gotoBlockList) {
