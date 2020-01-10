@@ -54,14 +54,18 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
   }
 
   scroll(gotoBlock: GotoBlock): void {
-    gotoBlock.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    gotoBlock.element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   removeSelf(): void {
-    this.remove.emit();
-    for (const gotoBlock of this.gotoBlockList) {
-      // Tell child goto blocks, that the snippet is deleted
-      gotoBlock.update();
+    if (this.gotoBlockList.length > 0) {
+      alert('Please change all goto, which point to the snippet');
+    } else {
+      this.remove.emit();
+      for (const gotoBlock of this.gotoBlockList) {
+        // Tell child goto blocks, that the snippet is deleted
+        gotoBlock.update();
+      }
     }
   }
 
