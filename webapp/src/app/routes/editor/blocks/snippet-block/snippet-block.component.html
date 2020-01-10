@@ -3,14 +3,19 @@
     <div class="title">Snippet</div>
     <div class="arg text-field">
       <div class="label">Name:</div>
-      <input [(ngModel)]="block.name" *ngIf="!block.isDefault">
+      <input [formControl]="input" *ngIf="!block.isDefault">
       <span class="static" *ngIf="block.isDefault">{{ block.name }}</span>
     </div>
     <div
       class="delete"
-      (click)="remove.emit()"
+      (click)="removeSelf()"
       *ngIf="!block.isDefault"
     ><mat-icon>delete</mat-icon></div>
+    <div class="goto-links">
+      <div class="goto-link" *ngFor="let gotoBlock of gotoBlockList">
+        <a (click)="scroll(gotoBlock)">goto</a>
+      </div>
+    </div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

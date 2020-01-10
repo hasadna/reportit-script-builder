@@ -21,4 +21,8 @@ export class NotificationService {
   error(message: string): void {
     this.snack(message, 'notification-error');
   }
+
+  warning(message: string): void {
+   this.snack(message, 'notification-warning');
+  }
 }

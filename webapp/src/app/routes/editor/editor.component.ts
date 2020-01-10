@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { YamlService, LoadingService } from '@/core/services';
+import { YamlService, LoadingService, BlockService } from '@/core/services';
 
 @Component({
   selector: 'page-editor',
@@ -11,5 +11,8 @@ export class EditorComponent {
   constructor(
     public yamlService: YamlService,
     public loadingService: LoadingService,
-  ) { }
+    private blockService: BlockService,
+  ) {
+    this.blockService.gotoBlockMap = {};
+  }
 }
