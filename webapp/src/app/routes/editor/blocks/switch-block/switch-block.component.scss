@@ -2,6 +2,12 @@
 
 .component {
   >.app-block {
+    >.var-select {
+      >.mat-form-field {
+        position: absolute;
+        top: 20px;
+      }
+    }
     >button {
       margin-top: 10px;
     }

@@ -16,3 +16,20 @@ $material-theme: mat-light-theme(
     font-size: 14px;
   }
 }
+
+.var-select {
+  .mat-form-field-infix {
+    border: 0;
+    padding: 3px 0;
+    width: 340px;
+  }
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+  .mat-form-field-underline {
+    position: static;
+  }
+  .mat-form-field-subscript-wrapper {
+    display: none;
+  }
+}

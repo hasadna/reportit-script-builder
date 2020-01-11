@@ -53,6 +53,7 @@ export class HeaderComponent implements OnDestroy {
       }
     });
     this.radio.valueChanges.subscribe(option => {
+      this.blockService.update();
       this.getScript();
     });
     this.authService.onlineChanges.subscribe(isOnline => this.getScript());

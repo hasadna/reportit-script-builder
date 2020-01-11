@@ -38,7 +38,15 @@ export class WaitButtonStepBlockComponent {
     });
   }
 
+  removeSelf(): void {
+    for (const button of this.block.buttons) {
+      this.blockService.destroyChilds(button);
+    }
+    this.remove.emit();
+  }
+
   deleteButton(index: number): void {
     this.block.buttons.splice(index, 1);
+    this.blockService.destroyChilds(this.block.buttons[index]);
   }
 }

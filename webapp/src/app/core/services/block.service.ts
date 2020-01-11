@@ -16,6 +16,7 @@ import {
   TaskTemplateBlock,
   OrganizationBlock,
   OrderArrow,
+  VariableBlock,
 } from '@/core/types';
 
 @Injectable()
@@ -25,6 +26,10 @@ export class BlockService {
   blockList: Block[] = [];
   gotoBlockMap: { [id: string]: GotoBlock } = {};
   gotoChanges = new Subject<void>();
+  switchBlockMap: { [id: string]: SwitchBlock } = {};
+  switchChanges = new Subject<SwitchBlock>();
+  variableBlockMap: { [id: string]: VariableBlock } = {};
+  variableChanges = new Subject<void>();
 
   getNewBlock(blockType: BlockType):
     SayBlock |
@@ -69,5 +74,33 @@ export class BlockService {
       array[newIndex] = array[index];
       array[index] = stash;
     }
+  }
+
+  // Asks all anchor blocks in the branch to destroy themselves
+  destroyChilds(stepObject: { steps: Block[] }): void {
+    for (const block of stepObject.steps) {
+      switch (block.type) {
+        case BlockType.Goto:
+          (block as GotoBlock).destroy();
+          break;
+        case BlockType.Switch:
+          (block as SwitchBlock).destroy();
+          for (const switchCase of (block as SwitchBlock).cases) {
+            this.destroyChilds(switchCase);
+          }
+          break;
+        case BlockType.WaitButtonStep:
+          for (const button of (block as WaitButtonStepBlock).buttons) {
+            this.destroyChilds(button);
+          }
+          break;
+      }
+    }
+  }
+
+  update(): void {
+    this.gotoBlockMap = {};
+    this.switchBlockMap = {};
+    this.variableBlockMap = {};
   }
 }

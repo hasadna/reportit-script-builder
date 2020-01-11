@@ -6,13 +6,18 @@
   </div>
   <div class="message text-field">
     <div class="label">variable:</div>
-    <input [(ngModel)]="block.variable">
+    <input [formControl]="input">
   </div>
   <div class="message text-field">
     <div class="label">params:</div>
     <input [(ngModel)]="block.params">
   </div>
-  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="scroll-links">
+    <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
+      <a (click)="scroll(switchBlock)">switch</a>
+    </div>
+  </div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
