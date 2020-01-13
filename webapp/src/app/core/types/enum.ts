@@ -19,6 +19,7 @@ export enum BlockValidation {
   EmailAddress,
   Date,
   Hour,
+  Number,
 }
 
 export enum OrderArrow {

@@ -93,6 +93,10 @@ export class WaitInputBlockComponent implements OnInit, OnDestroy {
         label: "Verify it's a valid phone number",
         validation: BlockValidation.PhoneNumber,
       });
+      this.checkboxes.push({
+        label: 'Verify it has only numbers',
+        validation: BlockValidation.Number,
+      });
     }
     if (this.block.isWaitDateBlock()) {
       // Date validation only

@@ -1,6 +1,9 @@
 <div class="component">
   <mat-card class="app-block">
     <div class="title">Wait Step Button</div>
+    <div class="error" *ngIf="block.buttons.length === 0">
+      Please add at least one button
+    </div>
     <button mat-flat-button color="primary" (click)="addButton()">Add Button</button>
     <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
