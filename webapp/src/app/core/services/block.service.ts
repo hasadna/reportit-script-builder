@@ -30,6 +30,7 @@ export class BlockService {
   switchChanges = new Subject<SwitchBlock>();
   variableBlockMap: { [id: string]: VariableBlock } = {};
   variableChanges = new Subject<void>();
+  isUserScript: boolean = true;
 
   getNewBlock(blockType: BlockType):
     SayBlock |
@@ -78,22 +79,24 @@ export class BlockService {
 
   // Asks all anchor blocks in the branch to destroy themselves
   destroyChilds(stepObject: { steps: Block[] }): void {
-    for (const block of stepObject.steps) {
-      switch (block.type) {
-        case BlockType.Goto:
-          (block as GotoBlock).destroy();
-          break;
-        case BlockType.Switch:
-          (block as SwitchBlock).destroy();
-          for (const switchCase of (block as SwitchBlock).cases) {
-            this.destroyChilds(switchCase);
-          }
-          break;
-        case BlockType.WaitButtonStep:
-          for (const button of (block as WaitButtonStepBlock).buttons) {
-            this.destroyChilds(button);
-          }
-          break;
+    if (stepObject && stepObject.steps) {
+      for (const block of stepObject.steps) {
+        switch (block.type) {
+          case BlockType.Goto:
+            (block as GotoBlock).destroy();
+            break;
+          case BlockType.Switch:
+            (block as SwitchBlock).destroy();
+            for (const switchCase of (block as SwitchBlock).cases) {
+              this.destroyChilds(switchCase);
+            }
+            break;
+          case BlockType.WaitButtonStep:
+            for (const button of (block as WaitButtonStepBlock).buttons) {
+              this.destroyChilds(button);
+            }
+            break;
+        }
       }
     }
   }

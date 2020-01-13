@@ -46,6 +46,7 @@ const VALIDATION_LABELS: string[] = [
   'email-address',
   'date',
   'hour',
+  'number',
 ];
 
 @Injectable()
@@ -96,11 +97,13 @@ export class YamlService {
       description: this.description,
       name: this.name,
       constants: this.constants,
-      infocards: this.getYamlInfocards(this.infocards),
-      organizations: this.getYamlOrganizations(this.organizations),
-      taskTemplates: this.getYamlTaskTemplates(this.taskTemplates),
       snippets: this.snippetsToYaml(this.blockService.blockList),
     }];
+    if (!this.blockService.isUserScript) {
+      yamlList[0].infocards = this.getYamlInfocards(this.infocards);
+      yamlList[0].organizations = this.getYamlOrganizations(this.organizations);
+      yamlList[0].taskTemplates = this.getYamlTaskTemplates(this.taskTemplates);
+    }
     this.yaml = YAML.stringify(yamlList);
   }
 

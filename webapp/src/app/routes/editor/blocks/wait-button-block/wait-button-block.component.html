@@ -5,8 +5,11 @@
       <div class="label">Variable:</div>
       <input [formControl]="input">
     </div>
+    <div class="error" *ngIf="block.buttons.length === 0">
+      Please add at least one button
+    </div>
     <button mat-flat-button color="primary" (click)="addButton()">Add Button</button>
-    <div class="scroll-links">
+    <div class="scroll-links" *ngIf="switchBlockList.length > 0">
       <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
         <a (click)="scroll(switchBlock)">switch</a>
       </div>

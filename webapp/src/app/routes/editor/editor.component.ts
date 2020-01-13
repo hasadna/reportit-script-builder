@@ -17,7 +17,7 @@ export class EditorComponent implements OnDestroy {
   constructor(
     public yamlService: YamlService,
     public loadingService: LoadingService,
-    private blockService: BlockService,
+    public blockService: BlockService,
   ) {
     this.blockService.update();
 

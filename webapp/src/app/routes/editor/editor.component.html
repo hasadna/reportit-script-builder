@@ -14,8 +14,11 @@
       <textarea autosize [formControl]="constArea"></textarea>
     </div>
   </mat-card>
-  <infocard-list></infocard-list>
-  <organization-list></organization-list>
-  <task-template-list></task-template-list>
   <snippets></snippets>
+  <ng-container *ngIf="!blockService.isUserScript">
+    <div class="hr"></div>
+    <infocard-list></infocard-list>
+    <organization-list></organization-list>
+    <task-template-list></task-template-list>
+  </ng-container>
 </div>

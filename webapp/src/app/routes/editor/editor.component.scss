@@ -2,4 +2,11 @@
 
 .page {
   padding: 20px;
+  >.hr {
+    height: 1px;
+    background: #cccccc;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 }
