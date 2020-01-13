@@ -1,12 +1,26 @@
 <div class="component">
   <mat-card class="app-block">
+    <div class="anchor" #anchor></div>
     <div class="title">Switch</div>
-    <div class="arg text-field">
+    <div class="var-select text-field">
       <div class="label">Arg:</div>
-      <input [(ngModel)]="block.arg">
+      <div class="float-name">{{ block.arg }}</div>
+      <mat-form-field>
+        <mat-select>
+          <mat-option
+            *ngFor="let variable of variableList"
+            (click)="select(variable)"
+          >
+            {{ variable }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="error" *ngIf="isNotFound">
+      No variable found
     </div>
     <button mat-flat-button color="primary" (click)="addCase()">Add Case</button>
-    <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+    <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

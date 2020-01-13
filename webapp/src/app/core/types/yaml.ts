@@ -1,6 +1,7 @@
 export interface Yaml {
   description: string;
   name: string;
+  constants?: string[];
   infocards?: ChatInfocard[];
   organizations?: ChatOrganization[];
   taskTemplates?: ChatTaskTemplate[];

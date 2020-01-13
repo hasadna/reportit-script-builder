@@ -1,4 +1,4 @@
-<div class="page" *ngIf="!loadingService.isLoading">
+<div class="page page-scroll" *ngIf="!loadingService.isLoading">
   <mat-card class="app-block">
     <div class="title">Chatbot script</div>
     <div class="text-field">
@@ -8,6 +8,10 @@
     <div class="text-field">
       <div class="label">Description:</div>
       <input [(ngModel)]="yamlService.description">
+    </div>
+    <div class="text-field">
+      <div class="label">Constants:</div>
+      <textarea autosize [formControl]="constArea"></textarea>
     </div>
   </mat-card>
   <infocard-list></infocard-list>

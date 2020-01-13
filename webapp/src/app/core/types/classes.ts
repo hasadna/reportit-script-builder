@@ -4,6 +4,7 @@ import { Case, WaitButton, WaitStepButton, Scenario } from './interfaces';
 
 export class Block {
   type: BlockType;
+  id: string = randstr64(20);
 
   constructor(blockType: BlockType) {
     this.type = blockType;
@@ -54,11 +55,11 @@ export class SayBlock extends Block {
   say: string;
 }
 
-export class WaitVariableBlock extends Block {
+export class VariableBlock extends Block {
   variable: string = '';
 }
 
-export class WaitInputBlock extends WaitVariableBlock {
+export class WaitInputBlock extends VariableBlock {
   placeholder: string;
   validations: BlockValidation[] = [];
   validation: string;
@@ -82,7 +83,13 @@ export class WaitInputBlock extends WaitVariableBlock {
   }
 }
 
-export class WaitButtonBlock extends WaitVariableBlock {
+export class AnchorBlock extends Block {
+  element: HTMLDivElement;
+  update: () => void;
+  destroy: () => void;
+}
+
+export class WaitButtonBlock extends VariableBlock {
   buttons: WaitButton[] = [];
 }
 
@@ -90,7 +97,7 @@ export class WaitButtonStepBlock extends Block {
   buttons: WaitStepButton[] = [];
 }
 
-export class SwitchBlock extends Block {
+export class SwitchBlock extends AnchorBlock {
   arg: string;
   cases: Case[] = [];
 }
@@ -101,17 +108,13 @@ export class SnippetBlock extends Block {
   steps: Block[] = [];
 }
 
-export class GotoBlock extends Block {
+export class GotoBlock extends AnchorBlock {
   goto: string;
-  element: HTMLDivElement;
-  id: string = randstr64(20);
-  update: () => void;
 }
 
-export class DoBlock extends Block {
+export class DoBlock extends VariableBlock {
   cmd: string;
   params: string;
-  variable: string;
 }
 
 export class InfocardBlock extends Block {

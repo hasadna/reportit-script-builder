@@ -26,7 +26,7 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
     this.gotoSub = this.blockService.gotoChanges
       .pipe(debounceTime(0)) // ExpressionChangedAfterItHasBeenCheckedError fix
       .subscribe(() => {
-        // Get all child goto block, to be able to scroll to them
+        // Get all child goto blocks, to be able to scroll to them
         this.gotoBlockList = [];
         for (const gotoBlock of Object.values(this.blockService.gotoBlockMap)) {
           if (gotoBlock.goto === this.block.name) {
@@ -65,10 +65,6 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
       this.notificationService.warning('Please change all goto, which point to the snippet');
     } else {
       this.remove.emit();
-      for (const gotoBlock of this.gotoBlockList) {
-        // Tell child goto blocks, that the snippet is deleted
-        gotoBlock.update();
-      }
     }
   }
 

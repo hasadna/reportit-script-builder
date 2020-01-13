@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import * as YAML from 'yaml';
 
 import {
@@ -55,6 +56,8 @@ export class YamlService {
   infocards: Block[];
   organizations: Block[];
   taskTemplates: Block[];
+  constants: string[] = [];
+  yamlChanges = new Subject<void>();
 
   constructor(
     private blockService: BlockService,
@@ -81,6 +84,8 @@ export class YamlService {
       this.infocards = this.getInfocards(yaml);
       this.organizations = this.getOrganization(yaml);
       this.taskTemplates = this.getTaskTemplates(yaml);
+      this.constants = yaml.constants || [];
+      this.yamlChanges.next();
       return this.yamlToBlocks(yaml);
     }
   }
@@ -90,6 +95,7 @@ export class YamlService {
     const yamlList: Yaml[] = [{
       description: this.description,
       name: this.name,
+      constants: this.constants,
       infocards: this.getYamlInfocards(this.infocards),
       organizations: this.getYamlOrganizations(this.organizations),
       taskTemplates: this.getYamlTaskTemplates(this.taskTemplates),

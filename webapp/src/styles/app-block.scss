@@ -3,6 +3,10 @@
   box-sizing: border-box;
   position: relative;
   margin-bottom: 10px;
+  >.anchor {
+    position: absolute;
+    top: -5px;
+  }
   >.title {
     font-size: 15px;
     color: #404040;
@@ -30,6 +34,35 @@
       $padding: 5px;
       padding: $padding;
       width: calc(100% - 2 * #{$padding});
+    }
+  }
+  >.var-select {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    >.float-name {
+      height: 30px;
+      width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  >.error {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+  }
+  >.scroll-links {
+    margin-top: 10px;
+    >.scroll-link {
+      margin-top: 5px;
+      a {
+        color: #03a9f4;
+        text-decoration: underline;
+        font-size: 14px;
+        cursor: pointer;
+      }
     }
   }
   >.delete {

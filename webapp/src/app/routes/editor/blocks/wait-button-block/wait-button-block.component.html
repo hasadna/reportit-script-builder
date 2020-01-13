@@ -3,10 +3,15 @@
     <div class="title">Wait Button</div>
     <div class="name text-field">
       <div class="label">Variable:</div>
-      <input [(ngModel)]="block.variable">
+      <input [formControl]="input">
     </div>
     <button mat-flat-button color="primary" (click)="addButton()">Add Button</button>
-    <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+    <div class="scroll-links">
+      <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
+        <a (click)="scroll(switchBlock)">switch</a>
+      </div>
+    </div>
+    <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

@@ -9,7 +9,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 
-import { GotoBlock, OrderArrow, SnippetBlock, BlockType } from '@/core/types';
+import { GotoBlock, OrderArrow, SnippetBlock } from '@/core/types';
 import { BlockService } from '@/core/services';
 
 @Component({
@@ -20,7 +20,6 @@ import { BlockService } from '@/core/services';
 export class GotoBlockComponent implements OnInit, AfterViewInit {
   // Does the goto points to nowhere
   isEnd: boolean = false;
-  snippet: SnippetBlock;
   @ViewChild('goto', { static: false }) blockRef: ElementRef;
   @Input() block: GotoBlock;
   @Output() remove = new EventEmitter<void>();
@@ -32,12 +31,13 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getSnippet();
+    this.block.update = () => this.getSnippet();
+    this.block.destroy = () => this.removeSelf();
+    this.blockService.gotoBlockMap[this.block.id] = this.block;
   }
 
   ngAfterViewInit() {
     this.block.element = this.blockRef.nativeElement;
-    this.block.update = () => this.getSnippet();
-    this.blockService.gotoBlockMap[this.block.id] = this.block;
     this.blockService.gotoChanges.next();
   }
 
@@ -54,14 +54,8 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
     for (const block of this.blockService.blockList) {
       const snippet = block as SnippetBlock;
       if (snippet.name === this.block.goto) {
-        this.snippet = snippet;
         this.isEnd = false;
       }
-    }
-    if (this.isEnd) {
-      // If snippet not found, display own goto value
-      this.snippet = new SnippetBlock(BlockType.Snippet);
-      this.snippet.name = this.block.goto;
     }
   }
 
