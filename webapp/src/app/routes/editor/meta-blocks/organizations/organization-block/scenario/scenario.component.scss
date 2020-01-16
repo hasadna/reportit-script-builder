@@ -1,0 +1,9 @@
+@import 'styles/app-block';
+
+.app-block {
+  >.text-field {
+    >textarea {
+      direction: ltr;
+    }
+  }
+}

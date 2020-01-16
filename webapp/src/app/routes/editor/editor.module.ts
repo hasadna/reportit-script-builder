@@ -23,6 +23,7 @@ import {
   TaskTemplateListComponent,
   OrganizationBlockComponent,
   OrganizationListComponent,
+  ScenarioComponent,
 } from './meta-blocks';
 
 @NgModule({
@@ -49,6 +50,7 @@ import {
     TaskTemplateListComponent,
     OrganizationBlockComponent,
     OrganizationListComponent,
+    ScenarioComponent,
   ],
 })
 export class EditorModule { }

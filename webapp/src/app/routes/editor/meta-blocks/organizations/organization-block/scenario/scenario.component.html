@@ -1,0 +1,15 @@
+<mat-card class="app-block">
+  <div class="title">Scenario</div>
+  <div class="name text-field">
+    <div class="label">json:</div>
+    <textarea autosize [formControl]="textarea"></textarea>
+  </div>
+  <div class="error" *ngIf="isError">
+    Invalid JSON
+  </div>
+  <div class="delete" (click)="deleteScenario.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="reorder">
+    <mat-icon (click)="upScenario.emit()">keyboard_arrow_up</mat-icon>
+    <mat-icon (click)="downScenario.emit()">keyboard_arrow_down</mat-icon>
+  </div>
+</mat-card>

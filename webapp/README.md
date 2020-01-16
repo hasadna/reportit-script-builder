@@ -1,27 +1,32 @@
 # ReportitScriptBuilder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.1.
+To set up your development environment, follow these steps:
 
-## Development server
+## Installation
+Install these:
+* [node](https://nodejs.org/)
+* [npm](https://www.npmjs.com/)
+* [protoc](https://github.com/protocolbuffers/protobuf/releases)
+* [ng](https://angular.io/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Optional:
+* [firebase](https://firebase.google.com/docs/hosting/quickstart), to be able to deploy.
 
-## Code scaffolding
+Run `npm ci` to install common node modules  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm ci` to install node modules  
 
-## Build
+## Development
+Open direct project  
+Run `npm start` to start a dev server. Navigate to `http://localhost:4200/`  
+Run `npm run lint` to find tslint errors.  
+Run `npm run lint-fix` to fix tslint errors.  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Deploying
+```
+npm run build
+npm run deploy
+```
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+How to use firebase hosting:  
+https://firebase.google.com/docs/hosting/quickstart  
