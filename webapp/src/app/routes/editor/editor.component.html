@@ -1,4 +1,8 @@
 <div class="page page-scroll" *ngIf="!loadingService.isLoading">
+  <div class="hr-title">
+    <div class="hr"></div>
+    <div class="title">תסריטי משתמשים</div>
+  </div>
   <mat-card class="app-block">
     <div class="title">Chatbot script</div>
     <div class="text-field">
@@ -16,7 +20,10 @@
   </mat-card>
   <snippets></snippets>
   <ng-container *ngIf="!blockService.isUserScript">
-    <div class="hr"></div>
+    <div class="hr-title">
+      <div class="hr"></div>
+      <div class="title">מידע זמין</div>
+    </div>
     <infocard-list></infocard-list>
     <organization-list></organization-list>
     <task-template-list></task-template-list>

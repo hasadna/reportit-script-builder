@@ -11,7 +11,7 @@
     </div>
     <div class="message text-field">
       <div class="label">Description:</div>
-      <input [(ngModel)]="block.description">
+      <textarea autosize [(ngModel)]="block.description"></textarea>
     </div>
     <div class="message text-field">
       <div class="label">Email 1:</div>
@@ -86,18 +86,12 @@
   </mat-card>
   <div class="scenarios block-line">
     <div class="scenario" *ngFor="let scenario of block.scenarios; let i = index">
-      <mat-card class="app-block">
-        <div class="title">Scenario</div>
-        <div class="name text-field">
-          <div class="label">json:</div>
-          <textarea autosize [(ngModel)]="scenario.json"></textarea>
-        </div>
-        <div class="delete" (click)="deleteScenario(i)"><mat-icon>delete</mat-icon></div>
-        <div class="reorder">
-          <mat-icon (click)="upScenario(i)">keyboard_arrow_up</mat-icon>
-          <mat-icon (click)="downScenario(i)">keyboard_arrow_down</mat-icon>
-        </div>
-      </mat-card>
+      <organization-scenario
+        [scenario]="scenario"
+        (deleteScenario)="deleteScenario(i)"
+        (upScenario)="upScenario(i)"
+        (downScenario)="downScenario(i)"
+      ></organization-scenario>
     </div>
   </div>
 </div>
