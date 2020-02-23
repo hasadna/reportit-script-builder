@@ -1,11 +1,11 @@
 <mat-card class="component app-block">
-  <div class="title">Wait {{ label }}</div>
+  <div class="title">המתנה {{ label }}</div>
   <div class="name text-field">
-    <div class="label">Variable:</div>
+    <div class="label">משתנה:</div>
     <input [formControl]="input">
   </div>
   <div class="text-field" *ngIf="!block.isWaitDateBlock()">
-    <mat-checkbox color="primary" [(ngModel)]="block.long">Long</mat-checkbox>
+    <mat-checkbox color="primary" [(ngModel)]="block.long">ארוך</mat-checkbox>
   </div> 
   <div class="scroll-links">
     <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
@@ -17,7 +17,7 @@
       <div class="open-button" (click)="validationToggle()">
         <mat-icon *ngIf="!isValidationOpen">keyboard_arrow_down</mat-icon>
         <mat-icon *ngIf="isValidationOpen">keyboard_arrow_up</mat-icon>
-        <span>validation</span>
+        <span>וידוא</span>
       </div>
     </div>
     <div class="validation-settings" *ngIf="isValidationOpen">
@@ -28,7 +28,7 @@
       >{{ checkbox.label }}</block-checkbox>
     </div>
   </div>
-  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

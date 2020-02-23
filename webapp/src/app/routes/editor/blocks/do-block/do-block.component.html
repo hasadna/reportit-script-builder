@@ -1,23 +1,23 @@
 <mat-card class="component app-block">
-  <div class="title">Do</div>
+  <div class="title">ביצוע פקודה (Do)</div>
   <div class="message text-field">
     <div class="label">cmd:</div>
     <input [(ngModel)]="block.cmd">
   </div>
   <div class="message text-field">
-    <div class="label">variable:</div>
+    <div class="label">משתנה:</div>
     <input [formControl]="input">
   </div>
   <div class="message text-field">
-    <div class="label">params:</div>
+    <div class="label">פרמטר/ים:</div>
     <input [(ngModel)]="block.params">
   </div>
   <div class="scroll-links">
     <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
-      <a (click)="scroll(switchBlock)">switch</a>
+      <a (click)="scroll(switchBlock)">(Switch) ריבוי אפשרויות</a>
     </div>
   </div>
-  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

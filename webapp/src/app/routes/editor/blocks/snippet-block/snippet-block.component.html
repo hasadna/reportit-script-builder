@@ -1,8 +1,8 @@
 <div class="component">
   <mat-card class="app-block">
-    <div class="title">Snippet</div>
+    <div class="title">מקטע (Snippet)</div>
     <div class="arg text-field">
-      <div class="label">Name:</div>
+      <div class="label">שם:</div>
       <input [formControl]="input" *ngIf="!block.isDefault">
       <span class="static" *ngIf="block.isDefault">{{ block.name }}</span>
     </div>
@@ -10,10 +10,10 @@
       class="delete"
       (click)="removeSelf()"
       *ngIf="!block.isDefault"
-    ><mat-icon>delete</mat-icon></div>
+    ><mat-icon>מחיקה</mat-icon></div>
     <div class="scroll-links">
       <div class="scroll-link" *ngFor="let gotoBlock of gotoBlockList">
-        <a (click)="scroll(gotoBlock)">goto</a>
+        <a (click)="scroll(gotoBlock)">מעבר לבלוק (goto)</a>
       </div>
     </div>
     <div class="reorder">

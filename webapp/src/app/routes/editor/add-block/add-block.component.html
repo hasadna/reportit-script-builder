@@ -1,8 +1,8 @@
 <div class="new-block app-block">
-  <div class="title">Add a new block:</div>
+  <div class="title">הוספת בלוק חדש:</div>
   <div class="select">
     <mat-form-field>
-      <mat-label>Block Type</mat-label>
+      <mat-label>סוג הבלוק</mat-label>
       <mat-select [(value)]="blockTypeSelected">
         <mat-option *ngFor="let blockSelect of blockSelectList" [value]="blockSelect.type">
           {{ blockSelect.label }}
