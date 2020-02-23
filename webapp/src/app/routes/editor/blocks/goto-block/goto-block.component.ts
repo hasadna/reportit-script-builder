@@ -26,7 +26,7 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
   @Output() move = new EventEmitter<OrderArrow>();
 
   constructor(
-    private blockService: BlockService,
+    public blockService: BlockService,
   ) { }
 
   ngOnInit() {
