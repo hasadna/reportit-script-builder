@@ -7,14 +7,14 @@ $header-height: 60px;
   z-index: 1;
   display: flex;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   box-sizing: border-box;
   >.label {
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-right: 20px;
     user-select: none;
     >span {
       color: white;
@@ -24,7 +24,7 @@ $header-height: 60px;
   }
   >.menu {
     display: flex;
-    margin-left: 50px;
+    margin-right: 50px;
     >.page {
       outline: none;
       user-select: none;
@@ -52,7 +52,7 @@ $header-height: 60px;
   >.firebase {
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    margin-right: 50px;
     >.radio {
       display: flex;
       align-items: center;
@@ -61,7 +61,7 @@ $header-height: 60px;
       background: white;
       >.mat-radio-group {
         .mat-radio-button {
-          margin-right: 20px;
+          margin-left: 20px;
         }
       }
     }
@@ -71,7 +71,7 @@ $header-height: 60px;
   }
   >.auth {
     height: $header-height;
-    padding-right: 20px;
+    padding-left: 20px;
     display: flex;
     align-items: center;
   }

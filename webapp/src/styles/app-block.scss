@@ -71,7 +71,7 @@
     $width: 50px;
     width: $width;
     height: 100%;
-    right: -$width;
+    left: -$width;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +95,7 @@
   >.reorder {
     position: absolute;
     top: 5px;
-    right: 15px;
+    left: 15px;
     display: flex;
     flex-direction: column;
     user-select: none;
@@ -122,6 +122,6 @@
 }
 
 .block-line {
-  padding-left: 50px;
-  border-left: 1px solid #cccccc;
+  padding-right: 50px;
+  border-right: 1px solid #cccccc;
 }
