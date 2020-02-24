@@ -4,10 +4,12 @@ import { Case, WaitButton, WaitStepButton, Scenario } from './interfaces';
 
 export class Block {
   type: BlockType;
+  parent: Block;
   id: string = randstr64(20);
 
-  constructor(blockType: BlockType) {
+  constructor(blockType: BlockType, parent: Block) {
     this.type = blockType;
+    this.parent = parent;
   }
 
   isSayBlock(): boolean {
@@ -102,7 +104,7 @@ export class SwitchBlock extends AnchorBlock {
   cases: Case[] = [];
 }
 
-export class SnippetBlock extends Block {
+export class SnippetBlock extends AnchorBlock {
   name: string = '';
   isDefault: boolean = false;
   steps: Block[] = [];

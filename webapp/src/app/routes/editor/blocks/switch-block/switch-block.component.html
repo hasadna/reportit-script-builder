@@ -20,7 +20,7 @@
       שם המשתנה לא נמצא
     </div>
     <button mat-flat-button color="primary" (click)="addCase()">הוספת אפשרות</button>
-    <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
+    <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
@@ -37,14 +37,14 @@
         <div class="text-field">
           <mat-checkbox color="primary" [(ngModel)]="case.isDefault">ברירת מחדל</mat-checkbox>
         </div> 
-        <div class="delete" (click)="deleteCase(i)"><mat-icon>מחיקה</mat-icon></div>
+        <div class="delete" (click)="deleteCase(i)"><mat-icon>delete</mat-icon></div>
         <div class="reorder">
           <mat-icon (click)="upCase(i)">keyboard_arrow_up</mat-icon>
           <mat-icon (click)="downCase(i)">keyboard_arrow_down</mat-icon>
         </div>
       </mat-card>
       <div class="steps">
-        <block-list [blockList]="case.steps"></block-list>
+        <block-list [parent]='block' [blockList]="case.steps"></block-list>
       </div>
     </div>
   </div>

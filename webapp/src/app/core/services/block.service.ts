@@ -32,7 +32,7 @@ export class BlockService {
   variableChanges = new Subject<void>();
   isUserScript: boolean = true;
 
-  getNewBlock(blockType: BlockType):
+  getNewBlock(blockType: BlockType, parent: Block):
     SayBlock |
     WaitInputBlock |
     SwitchBlock |
@@ -45,25 +45,25 @@ export class BlockService {
     OrganizationBlock |
     TaskTemplateBlock {
     switch (blockType) {
-      case BlockType.Say: return new SayBlock(blockType);
+      case BlockType.Say: return new SayBlock(blockType, parent);
       case BlockType.WaitDate:
-      case BlockType.WaitText: return new WaitInputBlock(blockType);
-      case BlockType.Switch: return new SwitchBlock(blockType);
-      case BlockType.Snippet: return new SnippetBlock(blockType);
-      case BlockType.Goto: return new GotoBlock(blockType);
-      case BlockType.WaitButton: return new WaitButtonBlock(blockType);
-      case BlockType.WaitButtonStep: return new WaitButtonStepBlock(blockType);
-      case BlockType.Do: return new DoBlock(blockType);
-      case BlockType.Infocard: return new InfocardBlock(blockType);
-      case BlockType.TaskTemplate: return new TaskTemplateBlock(blockType);
-      case BlockType.Organization: return new OrganizationBlock(blockType);
+      case BlockType.WaitText: return new WaitInputBlock(blockType, parent);
+      case BlockType.Switch: return new SwitchBlock(blockType, parent);
+      case BlockType.Snippet: return new SnippetBlock(blockType, parent);
+      case BlockType.Goto: return new GotoBlock(blockType, parent);
+      case BlockType.WaitButton: return new WaitButtonBlock(blockType, parent);
+      case BlockType.WaitButtonStep: return new WaitButtonStepBlock(blockType, parent);
+      case BlockType.Do: return new DoBlock(blockType, parent);
+      case BlockType.Infocard: return new InfocardBlock(blockType, parent);
+      case BlockType.TaskTemplate: return new TaskTemplateBlock(blockType, parent);
+      case BlockType.Organization: return new OrganizationBlock(blockType, parent);
 
       default: throw new Error('Block type not found');
     }
   }
 
-  fromObject(block: Block): Block {
-    const newBlock: Block = this.getNewBlock(block.type);
+  fromObject(block: Block, parent: Block): Block {
+    const newBlock: Block = this.getNewBlock(block.type, parent);
     return Object.assign(newBlock, block);
   }
 

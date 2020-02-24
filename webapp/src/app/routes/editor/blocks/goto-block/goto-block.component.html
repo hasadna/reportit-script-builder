@@ -14,10 +14,15 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="scroll-links" *ngIf='!isEnd' >
+    <div class="scroll-link">
+      <a (click)='gotoSnippet()'>מעבר למקטע</a>
+    </div>
+  </div>
   <div class="error" *ngIf="isEnd">
     לא נמצא מקטע
   </div>
-  <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

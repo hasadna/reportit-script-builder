@@ -16,7 +16,7 @@ export class SnippetsComponent {
   }
 
   addSnippet(): void {
-    const snippetBlock = new SnippetBlock(BlockType.Snippet);
+    const snippetBlock = new SnippetBlock(BlockType.Snippet, null);
     this.blockService.blockList.push(snippetBlock);
   }
 
