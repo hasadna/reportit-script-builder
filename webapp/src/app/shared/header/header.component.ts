@@ -25,7 +25,7 @@ interface Link {
 })
 export class HeaderComponent implements OnDestroy {
   routes: Link[] = [
-    { label: 'Blocks', url: '/' },
+    { label: 'תסריטים', url: '/' },
     { label: 'YAML', url: '/yaml' },
   ];
   url: string;
