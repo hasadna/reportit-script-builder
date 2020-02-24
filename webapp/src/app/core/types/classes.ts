@@ -1,13 +1,13 @@
 import { randstr64 } from 'rndmjs';
 import { BlockType, BlockValidation } from './enum';
-import { Case, WaitButton, WaitStepButton, Scenario } from './interfaces';
+import { Case, WaitButton, WaitStepButton, Scenario, WithParent } from './interfaces';
 
-export class Block {
+export class Block implements WithParent {
+  parent: WithParent;
   type: BlockType;
-  parent: Block;
   id: string = randstr64(20);
 
-  constructor(blockType: BlockType, parent: Block) {
+  constructor(blockType: BlockType, parent: WithParent) {
     this.type = blockType;
     this.parent = parent;
   }

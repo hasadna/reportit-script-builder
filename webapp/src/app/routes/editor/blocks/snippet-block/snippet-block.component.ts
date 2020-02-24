@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { SnippetBlock, OrderArrow, GotoBlock, Block } from '@/core/types';
+import { SnippetBlock, OrderArrow, GotoBlock, Block, WithParent } from '@/core/types';
 import { BlockService, NotificationService } from '@/core/services';
 
 @Component({
@@ -14,7 +14,7 @@ import { BlockService, NotificationService } from '@/core/services';
 export class SnippetBlockComponent implements OnInit, OnDestroy, AfterViewInit {
   input = new FormControl();
   gotoBlockList: GotoBlock[] = [];
-  sourceSnippets: Block[] = [];
+  sourceSnippets: string[] = [];
   gotoSub = new Subscription();
   @Input() block: SnippetBlock;
   @Output() remove = new EventEmitter<void>();
@@ -33,11 +33,25 @@ export class SnippetBlockComponent implements OnInit, OnDestroy, AfterViewInit {
         for (const gotoBlock of Object.values(this.blockService.gotoBlockMap)) {
           if (gotoBlock.goto === this.block.name) {
             this.gotoBlockList.push(gotoBlock);
-            let parentBlock: Block = gotoBlock;
-            while (parentBlock && !parentBlock['name']) {
+            let parentBlock: WithParent = gotoBlock;
+            const sourceNames = [];
+            while (parentBlock) {
               parentBlock = parentBlock.parent;
+              if (!parentBlock) {
+                break;
+              }
+              if (parentBlock['name']) {
+                sourceNames.unshift(parentBlock['name']);
+                break;
+              }
+              if (parentBlock['show']) {
+                sourceNames.unshift(parentBlock['show']);
+              }
+              if (parentBlock['match']) {
+                sourceNames.unshift(parentBlock['match']);
+              }
             }
-            this.sourceSnippets.push(parentBlock);
+            this.sourceSnippets.push(sourceNames.join(' / '));
           }
         }
       });

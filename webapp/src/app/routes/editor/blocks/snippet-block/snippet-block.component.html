@@ -13,8 +13,8 @@
       *ngIf="!block.isDefault"
     ><mat-icon>delete</mat-icon></div>
     <div class="scroll-links">
-      <div class="scroll-link" *ngFor="let block of sourceSnippets; let i=index;">
-        <a (click)="scroll(gotoBlockList[i])">חזרה ל-{{block.name}}</a>
+      <div class="scroll-link" *ngFor="let source of sourceSnippets; let i=index;">
+        <a (click)="scroll(gotoBlockList[i])">חזרה ל-{{source}}</a>
       </div>
     </div>
     <div class="reorder">

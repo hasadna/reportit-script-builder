@@ -18,6 +18,7 @@ import {
   OrganizationBlock,
   Case,
   WaitStepButton,
+  WithParent,
 } from '@/core/types';
 import {
   Yaml,
@@ -242,7 +243,7 @@ export class YamlService {
   }
 
   // Converts YAML steps to app block list
-  yamlStepsToBlockSteps(yaml: Steps, parent: Block): Block[] {
+  yamlStepsToBlockSteps(yaml: Steps, parent: WithParent): Block[] {
     const blockList: Block[] = [];
     for (const step of yaml.steps) {
       const blockKey: string = Object.keys(step)[0];
@@ -279,11 +280,14 @@ export class YamlService {
             if (!switchCase.steps) {
               switchCase.steps = [];
             }
-            cases.push({
-              steps: this.yamlStepsToBlockSteps(switchCase, switchBlock),
+            const theCase: Case = {
+              parent: switchBlock,
+              steps: [],
               isDefault: switchCase.default,
               match: switchCase.match,
-            });
+            };
+            theCase.steps = this.yamlStepsToBlockSteps(switchCase, theCase);
+            cases.push(theCase);
           }
           switchBlock.cases = cases;
           blockList.push(switchBlock);
@@ -328,12 +332,14 @@ export class YamlService {
             const chatWaitButtonStep = chatWait as ChatWaitButtonStep;
             const waitStepButtons: WaitStepButton[] = [];
             for (const option of chatWaitButtonStep.wait.options) {
-              const steps: Block[] = (option.steps && option.steps.length) ?
-                this.yamlStepsToBlockSteps(option, waitButtonStepBlock) : [];
-              waitStepButtons.push({
-                show: option.show,
-                steps: steps,
-              });
+                const button: WaitStepButton = {
+                  parent: waitButtonStepBlock,
+                  show: option.show,
+                  steps: [],
+                };
+                button.steps = (option.steps && option.steps.length) ?
+                  this.yamlStepsToBlockSteps(option, button) : [];
+                waitStepButtons.push(button);
             }
             waitButtonStepBlock.buttons = waitStepButtons;
             blockList.push(waitButtonStepBlock);
