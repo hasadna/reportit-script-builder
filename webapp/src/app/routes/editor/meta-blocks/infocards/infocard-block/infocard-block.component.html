@@ -1,18 +1,18 @@
 <mat-card class="component app-block">
-  <div class="title">Infocard</div>
+  <div class="title">כרטיסיית מידע (Infocards)</div>
   <div class="message text-field">
-    <div class="label">Title:</div>
+    <div class="label">כותרת:</div>
     <input [(ngModel)]="block.title">
   </div>
   <div class="message text-field">
-    <div class="label">Content:</div>
+    <div class="label">תוכן:</div>
     <input [(ngModel)]="block.content">
   </div>
   <div class="message text-field">
-    <div class="label">Slug:</div>
+    <div class="label">כינוי (Slug):</div>
     <input [(ngModel)]="block.slug">
   </div>
-  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="delete" (click)="remove.emit()"><mat-icon>מחיקה</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

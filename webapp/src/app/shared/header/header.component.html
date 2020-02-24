@@ -1,6 +1,6 @@
 <div class="header">
   <div class="label">
-    <span>Chatbot editor</span>
+    <span>עורך תסריטי השימוש</span>
   </div>
   <ng-container *ngIf="authService.isOnline">
     <div class="menu">
@@ -13,15 +13,15 @@
     <div class="firebase">
       <div class="radio">
         <mat-radio-group [formControl]="radio">
-          <mat-radio-button color="primary" value="user">User</mat-radio-button>
-          <mat-radio-button color="primary" value="agent">Agent</mat-radio-button>
+          <mat-radio-button color="primary" value="user">פונה</mat-radio-button>
+          <mat-radio-button color="primary" value="agent">מוקדנ/ית</mat-radio-button>
         </mat-radio-group>
-        <button mat-flat-button color="primary" (click)="save()">Save</button>
+        <button mat-flat-button color="primary" (click)="save()">שמירה</button>
       </div>
     </div>
     <div class="flex"></div>
     <div class="auth">
-      <button mat-flat-button (click)="logOut()">Log out</button>
+      <button mat-flat-button (click)="logOut()">התנתקות</button>
     </div>
   </ng-container>
 </div>

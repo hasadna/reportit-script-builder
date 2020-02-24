@@ -1,9 +1,9 @@
 <div class="component">
   <mat-card class="app-block">
     <div class="anchor" #anchor></div>
-    <div class="title">Switch</div>
+    <div class="title">(Switch) ריבוי אפשרויות</div>
     <div class="var-select text-field">
-      <div class="label">Arg:</div>
+      <div class="label">ארגומנט:</div>
       <div class="float-name">{{ block.arg }}</div>
       <mat-form-field>
         <mat-select>
@@ -17,10 +17,10 @@
       </mat-form-field>
     </div>
     <div class="error" *ngIf="isNotFound">
-      No variable found
+      שם המשתנה לא נמצא
     </div>
-    <button mat-flat-button color="primary" (click)="addCase()">Add Case</button>
-    <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
+    <button mat-flat-button color="primary" (click)="addCase()">הוספת אפשרות</button>
+    <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
@@ -29,15 +29,15 @@
   <div class="cases block-line">
     <div class="case" *ngFor="let case of block.cases; let i = index">
       <mat-card class="app-block">
-        <div class="title">Case</div>
+        <div class="title">אפשרות</div>
         <div class="condition text-field" *ngIf="!case.isDefault">
-          <div class="label">Match:</div>
+          <div class="label">התאמה:</div>
           <input [(ngModel)]="case.match">
         </div>
         <div class="text-field">
-          <mat-checkbox color="primary" [(ngModel)]="case.isDefault">Default</mat-checkbox>
+          <mat-checkbox color="primary" [(ngModel)]="case.isDefault">ברירת מחדל</mat-checkbox>
         </div> 
-        <div class="delete" (click)="deleteCase(i)"><mat-icon>delete</mat-icon></div>
+        <div class="delete" (click)="deleteCase(i)"><mat-icon>מחיקה</mat-icon></div>
         <div class="reorder">
           <mat-icon (click)="upCase(i)">keyboard_arrow_up</mat-icon>
           <mat-icon (click)="downCase(i)">keyboard_arrow_down</mat-icon>
