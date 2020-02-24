@@ -19,7 +19,7 @@ export class InfocardListComponent {
   }
 
   addInfocard(): void {
-    const infocardBlock = new InfocardBlock(BlockType.Infocard);
+    const infocardBlock = new InfocardBlock(BlockType.Infocard, null);
     this.yamlService.infocards.push(infocardBlock);
   }
 

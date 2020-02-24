@@ -18,6 +18,7 @@ import {
   OrganizationBlock,
   Case,
   WaitStepButton,
+  WithParent,
 } from '@/core/types';
 import {
   Yaml,
@@ -233,33 +234,33 @@ export class YamlService {
   yamlToBlocks(yaml: Yaml): Block[] {
     const blockList: Block[] = [];
     for (const snippet of yaml.snippets) {
-      const snippetBlock = new SnippetBlock(BlockType.Snippet);
+      const snippetBlock = new SnippetBlock(BlockType.Snippet, null);
       snippetBlock.name = snippet.name;
-      snippetBlock.steps = this.yamlStepsToBlockSteps(snippet);
+      snippetBlock.steps = this.yamlStepsToBlockSteps(snippet, snippetBlock);
       blockList.push(snippetBlock);
     }
     return blockList;
   }
 
   // Converts YAML steps to app block list
-  yamlStepsToBlockSteps(yaml: Steps): Block[] {
+  yamlStepsToBlockSteps(yaml: Steps, parent: WithParent): Block[] {
     const blockList: Block[] = [];
     for (const step of yaml.steps) {
       const blockKey: string = Object.keys(step)[0];
       // Find out type of the element and create suitable block
       switch (blockKey) {
         case 'say':
-          const sayBlock = new SayBlock(BlockType.Say);
+          const sayBlock = new SayBlock(BlockType.Say, parent);
           sayBlock.say = (step as ChatSay).say;
           blockList.push(sayBlock);
           break;
         case 'goto':
-          const gotoBlock = new GotoBlock(BlockType.Goto);
+          const gotoBlock = new GotoBlock(BlockType.Goto, parent);
           gotoBlock.goto = (step as ChatGoto).goto;
           blockList.push(gotoBlock);
           break;
         case 'do':
-          const doBlock = new DoBlock(BlockType.Do);
+          const doBlock = new DoBlock(BlockType.Do, parent);
           const chatDo = step as ChatDo;
           doBlock.cmd = chatDo.do.cmd;
           if (chatDo.do.variable) {
@@ -271,7 +272,7 @@ export class YamlService {
           blockList.push(doBlock);
           break;
         case 'switch':
-          const switchBlock = new SwitchBlock(BlockType.Switch);
+          const switchBlock = new SwitchBlock(BlockType.Switch, parent);
           const chatSwitch = step as ChatSwitch;
           switchBlock.arg = chatSwitch.switch.arg;
           const cases: Case[] = [];
@@ -279,11 +280,14 @@ export class YamlService {
             if (!switchCase.steps) {
               switchCase.steps = [];
             }
-            cases.push({
-              steps: this.yamlStepsToBlockSteps(switchCase),
+            const theCase: Case = {
+              parent: switchBlock,
+              steps: [],
               isDefault: switchCase.default,
               match: switchCase.match,
-            });
+            };
+            theCase.steps = this.yamlStepsToBlockSteps(switchCase, theCase);
+            cases.push(theCase);
           }
           switchBlock.cases = cases;
           blockList.push(switchBlock);
@@ -297,7 +301,7 @@ export class YamlService {
           const isButton: boolean = chatWait.wait.hasOwnProperty('options');
           if (isVar && isButton) {
             // Wait button
-            const waitButtonBlock = new WaitButtonBlock(BlockType.WaitButton);
+            const waitButtonBlock = new WaitButtonBlock(BlockType.WaitButton, parent);
             const chatWaitButton = chatWait as ChatWaitButton;
             waitButtonBlock.variable = chatWaitButton.wait.variable;
             waitButtonBlock.buttons = chatWaitButton.wait.options;
@@ -308,7 +312,7 @@ export class YamlService {
             const blockType: BlockType = chatWaitVar.wait.date ?
               BlockType.WaitDate :
               BlockType.WaitText;
-            const waitInputBlock = new WaitInputBlock(blockType);
+            const waitInputBlock = new WaitInputBlock(blockType, parent);
             waitInputBlock.variable = chatWaitVar.wait.variable;
             if (!chatWaitVar.wait.date) {
               // Wait text only
@@ -324,16 +328,18 @@ export class YamlService {
             blockList.push(waitInputBlock);
           } else if (!isVar && isButton) {
             // Wait step
-            const waitButtonStepBlock = new WaitButtonStepBlock(BlockType.WaitButtonStep);
+            const waitButtonStepBlock = new WaitButtonStepBlock(BlockType.WaitButtonStep, parent);
             const chatWaitButtonStep = chatWait as ChatWaitButtonStep;
             const waitStepButtons: WaitStepButton[] = [];
             for (const option of chatWaitButtonStep.wait.options) {
-              const steps: Block[] = (option.steps && option.steps.length) ?
-                this.yamlStepsToBlockSteps(option) : [];
-              waitStepButtons.push({
-                show: option.show,
-                steps: steps,
-              });
+                const button: WaitStepButton = {
+                  parent: waitButtonStepBlock,
+                  show: option.show,
+                  steps: [],
+                };
+                button.steps = (option.steps && option.steps.length) ?
+                  this.yamlStepsToBlockSteps(option, button) : [];
+                waitStepButtons.push(button);
             }
             waitButtonStepBlock.buttons = waitStepButtons;
             blockList.push(waitButtonStepBlock);
@@ -352,7 +358,7 @@ export class YamlService {
     const blockList: Block[] = [];
     if (yaml.infocards) {
       for (const infocard of yaml.infocards) {
-        const infocardBlock = new InfocardBlock(BlockType.Infocard);
+        const infocardBlock = new InfocardBlock(BlockType.Infocard, null);
         infocardBlock.title = infocard.title;
         infocardBlock.content = infocard.content;
         infocardBlock.slug = infocard.slug;
@@ -367,7 +373,7 @@ export class YamlService {
     const blockList: Block[] = [];
     if (yaml.organizations) {
       for (const organization of yaml.organizations) {
-        const organizationBlock = new OrganizationBlock(BlockType.Organization);
+        const organizationBlock = new OrganizationBlock(BlockType.Organization, null);
         organizationBlock.contactPerson1 = organization.contactPerson1;
         organizationBlock.contactPerson2 = organization.contactPerson2;
         organizationBlock.description = organization.description;
@@ -399,7 +405,7 @@ export class YamlService {
     const blockList: Block[] = [];
     if (yaml.taskTemplates) {
       for (const taskTemplate of yaml.taskTemplates) {
-        const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate);
+        const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate, null);
         taskTemplateBlock.title = taskTemplate.title;
         taskTemplateBlock.description = taskTemplate.description;
         taskTemplateBlock.infocardSlugs = taskTemplate.infocardSlugs;

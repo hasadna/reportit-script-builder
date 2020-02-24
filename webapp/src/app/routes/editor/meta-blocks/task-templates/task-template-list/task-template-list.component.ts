@@ -19,7 +19,7 @@ export class TaskTemplateListComponent {
   }
 
   addTaskTemplate(): void {
-    const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate);
+    const taskTemplateBlock = new TaskTemplateBlock(BlockType.TaskTemplate, null);
     this.yamlService.taskTemplates.push(taskTemplateBlock);
   }
 

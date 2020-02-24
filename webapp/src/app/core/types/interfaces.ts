@@ -1,4 +1,4 @@
-import { Block } from './classes';
+import { Block, WaitButtonStepBlock } from './classes';
 import { BlockType } from './enum';
 
 export interface BlockSelect {
@@ -6,7 +6,7 @@ export interface BlockSelect {
   type: BlockType;
 }
 
-export interface Case {
+export interface Case extends WithParent{
   match: string;
   isDefault: boolean;
   steps: Block[];
@@ -17,11 +17,15 @@ export interface WaitButton {
   value: string;
 }
 
-export interface WaitStepButton {
+export interface WaitStepButton extends WithParent {
   show: string;
   steps: Block[];
 }
 
 export interface Scenario {
   json: string;
+}
+
+export interface WithParent {
+  parent: WithParent;
 }

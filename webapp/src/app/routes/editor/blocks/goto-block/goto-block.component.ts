@@ -25,6 +25,8 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
   @Output() remove = new EventEmitter<void>();
   @Output() move = new EventEmitter<OrderArrow>();
 
+  snippet: SnippetBlock;
+
   constructor(
     public blockService: BlockService,
   ) { }
@@ -55,6 +57,7 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
       const snippet = block as SnippetBlock;
       if (snippet.name === this.block.goto) {
         this.isEnd = false;
+        this.snippet = snippet;
       }
     }
   }
@@ -69,5 +72,10 @@ export class GotoBlockComponent implements OnInit, AfterViewInit {
     this.remove.emit();
     delete this.blockService.gotoBlockMap[this.block.id];
     this.blockService.gotoChanges.next();
+  }
+
+  gotoSnippet() {
+    console.log('going to snippet', this.snippet);
+    this.snippet.element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

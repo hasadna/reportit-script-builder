@@ -14,6 +14,11 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="scroll-links" *ngIf='!isEnd' >
+    <div class="scroll-link">
+      <a (click)='gotoSnippet()'>מעבר למקטע</a>
+    </div>
+  </div>
   <div class="error" *ngIf="isEnd">
     לא נמצא מקטע
   </div>

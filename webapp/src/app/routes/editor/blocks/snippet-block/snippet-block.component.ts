@@ -1,9 +1,9 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { SnippetBlock, OrderArrow, GotoBlock } from '@/core/types';
+import { SnippetBlock, OrderArrow, GotoBlock, Block, WithParent } from '@/core/types';
 import { BlockService, NotificationService } from '@/core/services';
 
 @Component({
@@ -11,13 +11,15 @@ import { BlockService, NotificationService } from '@/core/services';
   templateUrl: './snippet-block.component.html',
   styleUrls: ['./snippet-block.component.scss'],
 })
-export class SnippetBlockComponent implements OnInit, OnDestroy {
+export class SnippetBlockComponent implements OnInit, OnDestroy, AfterViewInit {
   input = new FormControl();
   gotoBlockList: GotoBlock[] = [];
+  sourceSnippets: string[] = [];
   gotoSub = new Subscription();
   @Input() block: SnippetBlock;
   @Output() remove = new EventEmitter<void>();
   @Output() move = new EventEmitter<OrderArrow>();
+  @ViewChild('anchor', { static: false }) blockRef: ElementRef;
 
   constructor(
     private blockService: BlockService,
@@ -31,6 +33,25 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
         for (const gotoBlock of Object.values(this.blockService.gotoBlockMap)) {
           if (gotoBlock.goto === this.block.name) {
             this.gotoBlockList.push(gotoBlock);
+            let parentBlock: WithParent = gotoBlock;
+            const sourceNames = [];
+            while (parentBlock) {
+              parentBlock = parentBlock.parent;
+              if (!parentBlock) {
+                break;
+              }
+              if (parentBlock['name']) {
+                sourceNames.unshift(parentBlock['name']);
+                break;
+              }
+              if (parentBlock['show']) {
+                sourceNames.unshift(parentBlock['show']);
+              }
+              if (parentBlock['match']) {
+                sourceNames.unshift(parentBlock['match']);
+              }
+            }
+            this.sourceSnippets.push(sourceNames.join(' / '));
           }
         }
       });
@@ -46,6 +67,10 @@ export class SnippetBlockComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.input.setValue(this.block.name, { emitEvent: false });
+  }
+
+  ngAfterViewInit() {
+    this.block.element = this.blockRef.nativeElement;
   }
 
   up(): void {
