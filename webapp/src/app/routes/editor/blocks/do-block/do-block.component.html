@@ -1,11 +1,11 @@
 <mat-card class="component app-block">
   <div class="title">ביצוע פקודה (Do)</div>
   <div class="message text-field">
-    <div class="label">cmd:</div>
+    <div class="label">שם הפקודה (cmd):</div>
     <input [(ngModel)]="block.cmd">
   </div>
   <div class="message text-field">
-    <div class="label">משתנה:</div>
+    <div class="label">שם המשתנה:</div>
     <input [formControl]="input">
   </div>
   <div class="message text-field">
@@ -14,7 +14,7 @@
   </div>
   <div class="scroll-links">
     <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
-      <a (click)="scroll(switchBlock)">(Switch) ריבוי אפשרויות</a>
+      <a (click)="scroll(switchBlock)">פיצול תסריט (Switch)</a>
     </div>
   </div>
   <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>

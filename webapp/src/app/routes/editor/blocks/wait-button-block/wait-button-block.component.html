@@ -1,14 +1,14 @@
 <div class="component">
   <mat-card class="app-block">
-    <div class="title">לחצן משוב</div>
+    <div class="title">שאלה סגורה</div>
     <div class="name text-field">
       <div class="label">משתנה:</div>
       <input [formControl]="input">
     </div>
     <div class="error" *ngIf="block.buttons.length === 0">
-      הוסיפו בבקשה לפחות לחצן אחד
+      הוסיפו בבקשה לפחות לחצן אפשרות אחד
     </div>
-    <button mat-flat-button color="primary" (click)="addButton()">הוספת לחצן</button>
+    <button mat-flat-button   color="primary" (click)="addButton()">הוספת לחצן אפשרות</button>
     <div class="scroll-links" *ngIf="switchBlockList.length > 0">
       <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
         <a (click)="scroll(switchBlock)">switch</a>
@@ -23,7 +23,7 @@
   <div class="buttons block-line">
     <div class="button" *ngFor="let button of block.buttons; let i = index">
       <mat-card class="app-block">
-        <div class="title">לחצן</div>
+        <div class="title">לחצן אפשרות</div>
         <div class="name text-field">
           <div class="label">הצגה:</div>
           <input [(ngModel)]="button.show">

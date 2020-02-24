@@ -2,7 +2,7 @@
   <mat-card class="app-block">
     <div class="title">מקטע (Snippet)</div>
     <div class="arg text-field">
-      <div class="label">שם:</div>
+      <div class="label">שם המקטע:</div>
       <input [formControl]="input" *ngIf="!block.isDefault">
       <span class="static" *ngIf="block.isDefault">{{ block.name }}</span>
     </div>
@@ -13,7 +13,7 @@
     ><mat-icon>מחיקה</mat-icon></div>
     <div class="scroll-links">
       <div class="scroll-link" *ngFor="let gotoBlock of gotoBlockList">
-        <a (click)="scroll(gotoBlock)">מעבר לבלוק (goto)</a>
+        <a (click)="scroll(gotoBlock)">קיימת הפניה לבלוק הזה ממקטע אחר בתסריט (goto)</a>
       </div>
     </div>
     <div class="reorder">

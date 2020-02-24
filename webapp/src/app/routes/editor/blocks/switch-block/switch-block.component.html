@@ -1,9 +1,9 @@
 <div class="component">
   <mat-card class="app-block">
     <div class="anchor" #anchor></div>
-    <div class="title">(Switch) ריבוי אפשרויות</div>
+    <div class="title">(Switch) פיצול תסריט</div>
     <div class="var-select text-field">
-      <div class="label">ארגומנט:</div>
+      <div class="label">המשך התסריט יקבע לפי משתנה בשם:</div>
       <div class="float-name">{{ block.arg }}</div>
       <mat-form-field>
         <mat-select>
@@ -19,7 +19,7 @@
     <div class="error" *ngIf="isNotFound">
       שם המשתנה לא נמצא
     </div>
-    <button mat-flat-button color="primary" (click)="addCase()">הוספת אפשרות</button>
+    <button mat-flat-button color="primary" (click)="addCase()">הוספת פיצול לתסריט</button>
     <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
@@ -29,13 +29,13 @@
   <div class="cases block-line">
     <div class="case" *ngFor="let case of block.cases; let i = index">
       <mat-card class="app-block">
-        <div class="title">אפשרות</div>
+        <div class="title">פיצול</div>
         <div class="condition text-field" *ngIf="!case.isDefault">
-          <div class="label">התאמה:</div>
+          <div class="label">אם {{ block.arg }} שווה ל:</div>
           <input [(ngModel)]="case.match">
         </div>
         <div class="text-field">
-          <mat-checkbox color="primary" [(ngModel)]="case.isDefault">ברירת מחדל</mat-checkbox>
+          <mat-checkbox color="primary" [(ngModel)]="case.isDefault">ברירת מחדל (כל האפשרויות האחרות)</mat-checkbox>
         </div> 
         <div class="delete" (click)="deleteCase(i)"><mat-icon>מחיקה</mat-icon></div>
         <div class="reorder">
