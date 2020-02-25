@@ -30,6 +30,7 @@ export class SnippetBlockComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe(() => {
         // Get all child goto blocks, to be able to scroll to them
         this.gotoBlockList = [];
+        this.sourceSnippets = [];
         for (const gotoBlock of Object.values(this.blockService.gotoBlockMap)) {
           if (gotoBlock.goto === this.block.name) {
             this.gotoBlockList.push(gotoBlock);

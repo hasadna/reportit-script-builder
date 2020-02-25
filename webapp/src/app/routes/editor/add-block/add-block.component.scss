@@ -1,13 +1,21 @@
 @import 'styles/app-block';
 
 .new-block {
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  width: 480px;
+
+  >.title {
+    white-space: nowrap;
+  }
+
   >.select {
-    margin-top: 15px;
+    margin: 0 15px;
+    margin-bottom: -1.25rem;
   }
   >.button {
-    margin-top: 10px;
-    button {
-      width: 100%;
-    }
+    margin: 0 10px;
   }
 }
