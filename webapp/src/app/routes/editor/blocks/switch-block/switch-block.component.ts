@@ -68,6 +68,7 @@ export class SwitchBlockComponent implements OnInit, AfterViewInit, OnDestroy {
 
   addCase(): void {
     this.block.cases.unshift({
+      parent: this.block,
       match: '',
       isDefault: false,
       steps: [],

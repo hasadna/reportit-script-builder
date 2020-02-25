@@ -19,7 +19,7 @@ export class OrganizationListComponent {
   }
 
   addOrganization(): void {
-    const organizationBlock = new OrganizationBlock(BlockType.Organization);
+    const organizationBlock = new OrganizationBlock(BlockType.Organization, null);
     this.yamlService.organizations.push(organizationBlock);
   }
 

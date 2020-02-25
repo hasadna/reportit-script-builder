@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { WaitButtonStepBlock, OrderArrow } from '@/core/types';
+import { WaitButtonStepBlock, OrderArrow, WithParent } from '@/core/types';
 import { BlockService } from '@/core/services';
 
 @Component({
@@ -33,6 +33,7 @@ export class WaitButtonStepBlockComponent {
 
   addButton(): void {
     this.block.buttons.unshift({
+      parent: this.block,
       show: '',
       steps: [],
     });

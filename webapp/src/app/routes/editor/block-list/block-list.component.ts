@@ -10,6 +10,7 @@ import { BlockService } from '@/core/services';
 })
 export class BlockListComponent {
   @Input() blockList: Block[];
+  @Input() parent: Block;
 
   constructor(private blockService: BlockService) { }
 
@@ -18,7 +19,7 @@ export class BlockListComponent {
   }
 
   addBlock(blockType: BlockType): void {
-    const newBlock: Block = this.blockService.getNewBlock(blockType);
+    const newBlock: Block = this.blockService.getNewBlock(blockType, this.parent);
     this.blockList.push(newBlock);
   }
 
