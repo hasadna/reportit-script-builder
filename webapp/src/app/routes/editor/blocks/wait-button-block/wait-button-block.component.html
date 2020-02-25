@@ -11,7 +11,7 @@
     <button mat-flat-button color="primary" (click)="addButton()">הוספת לחצן אפשרות</button>
     <div class="scroll-links" *ngIf="switchBlockList.length > 0">
       <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
-        <a (click)="scroll(switchBlock)">switch</a>
+        <a (click)="scroll(switchBlock)">התפצלות תסריט המתבססת על התשובה</a>
       </div>
     </div>
     <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
