@@ -8,7 +8,7 @@
     <div class="error" *ngIf="block.buttons.length === 0">
       הוסיפו בבקשה לפחות לחצן אחד
     </div>
-    <button mat-flat-button color="primary" (click)="addButton(block)">הוספת לחצן</button>
+    <button mat-flat-button color="primary" (click)="addButton()">הוספת לחצן</button>
     <div class="scroll-links" *ngIf="switchBlockList.length > 0">
       <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
         <a (click)="scroll(switchBlock)">switch</a>
