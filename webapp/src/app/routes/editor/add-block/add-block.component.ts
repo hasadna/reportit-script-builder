@@ -9,14 +9,14 @@ import { BlockSelect, BlockType } from '@/core/types';
 })
 export class AddBlockComponent {
   blockSelectList: BlockSelect[] = [
-    { label: 'Say', type: BlockType.Say },
-    { label: 'Wait Date', type: BlockType.WaitDate },
-    { label: 'Wait Text', type: BlockType.WaitText },
-    { label: 'Wait Button', type: BlockType.WaitButton },
-    { label: 'Wait Step Button', type: BlockType.WaitButtonStep },
-    { label: 'Switch', type: BlockType.Switch },
-    { label: 'Go To', type: BlockType.Goto },
-    { label: 'Do', type: BlockType.Do },
+    { label: 'הצגת הודעה למשתמש/ת (Say)', type: BlockType.Say },
+    { label: 'שאלת תאריך (Wait Date)', type: BlockType.WaitDate },
+    { label: 'שאלה טקסטואלית פתוחה (Wait Text)', type: BlockType.WaitText },
+    { label: 'שאלה סגורה (Wait Button)', type: BlockType.WaitButton },
+    { label: 'שאלה סגורה+תגובות מותאמות (Wait Step Button', type: BlockType.WaitButtonStep },
+    { label: 'פיצול התסריט (Switch)', type: BlockType.Switch },
+    { label: 'מעבר למקטע אחר בתסריט (Goto)', type: BlockType.Goto },
+    { label: 'ביצוע פקודה (Do)', type: BlockType.Do },
   ];
   blockTypeSelected: BlockType = BlockType.Say;
   @Output() add = new EventEmitter<BlockType>();

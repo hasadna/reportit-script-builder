@@ -80,32 +80,32 @@ export class WaitInputBlockComponent implements OnInit, OnDestroy {
 
   initValidation(): void {
     this.checkboxes.push({
-      label: 'Verify no empty answer',
+      label: 'מניעת משלוח הודעה ריקה',
       validation: BlockValidation.NoEmptyAnswer,
     });
     if (this.block.isWaitTextBlock()) {
       // Text validation only
       this.checkboxes.push({
-        label: "Verify it's a valid email address",
+        label: "וידוא כתובת דוא\"ל תקינה",
         validation: BlockValidation.EmailAddress,
       });
       this.checkboxes.push({
-        label: "Verify it's a valid phone number",
+        label: "וידוא מספר טלפון תקין",
         validation: BlockValidation.PhoneNumber,
       });
       this.checkboxes.push({
-        label: 'Verify it has only numbers',
+        label: 'וידוא תשובה מספרית',
         validation: BlockValidation.Number,
       });
     }
     if (this.block.isWaitDateBlock()) {
       // Date validation only
       this.checkboxes.push({
-        label: "Verify it's a valid date",
+        label: "וידוא תאריך תקין",
         validation: BlockValidation.Date,
       });
       this.checkboxes.push({
-        label: "Verify it's a valid hour",
+        label: "וידוא שעה תקינה",
         validation: BlockValidation.Hour,
       });
     }
@@ -129,7 +129,7 @@ export class WaitInputBlockComponent implements OnInit, OnDestroy {
 
   removeSelf(): void {
     if (this.switchBlockList.length > 0) {
-      this.notificationService.warning('Please change all switch, which point to the wait');
+      this.notificationService.warning('עדכנו בבקשה את כל הפיצולים שמפנים לנקודה בתסריט');
     } else {
       this.remove.emit();
     }
