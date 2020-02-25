@@ -1,11 +1,11 @@
 <div class="component">
   <mat-card class="app-block">
-    <div class="title">שאלה סגורה+תגובות מותאמות (Wait Step Button)</div>
+    <div class="title">לחצן המתנת שלב (Wait Step Button)</div>
     <div class="error" *ngIf="block.buttons.length === 0">
       יש להוסיף לפחות לחצן אחד
     </div>
-    <button mat-flat-button color="primary" (click)="addButton()">הוספת לחצן אפשרות</button>
-    <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
+    <button mat-flat-button color="primary" (click)="addButton()">הוספת לחצן</button>
+    <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
       <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
@@ -19,7 +19,7 @@
           <div class="label">הצגה:</div>
           <input [(ngModel)]="button.show">
         </div>
-        <div class="delete" (click)="deleteButton(i)"><mat-icon>מחיקה</mat-icon></div>
+        <div class="delete" (click)="deleteButton(i)"><mat-icon>delete</mat-icon></div>
         <div class="reorder">
           <mat-icon (click)="upButton(i)">keyboard_arrow_up</mat-icon>
           <mat-icon (click)="downButton(i)">keyboard_arrow_down</mat-icon>

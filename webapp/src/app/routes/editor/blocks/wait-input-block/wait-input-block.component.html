@@ -1,15 +1,15 @@
 <mat-card class="component app-block">
-  <div class="title">שאלה פתוחה, מענה מסוג {{ label }}</div>
+  <div class="title">המתנה {{ label }}</div>
   <div class="name text-field">
     <div class="label">משתנה:</div>
     <input [formControl]="input">
   </div>
   <div class="text-field" *ngIf="!block.isWaitDateBlock()">
-    <mat-checkbox color="primary" [(ngModel)]="block.long">תשובה ארוכה</mat-checkbox>
+    <mat-checkbox color="primary" [(ngModel)]="block.long">ארוך</mat-checkbox>
   </div> 
   <div class="scroll-links">
     <div class="scroll-link" *ngFor="let switchBlock of switchBlockList">
-      <a (click)="scroll(switchBlock)">מעבר לפימול תסריט המתבסס על התשובה</a>
+      <a (click)="scroll(switchBlock)">switch</a>
     </div>
   </div>
   <div class="validation">
@@ -28,7 +28,7 @@
       >{{ checkbox.label }}</block-checkbox>
     </div>
   </div>
-  <div class="delete" (click)="removeSelf()"><mat-icon>מחיקה</mat-icon></div>
+  <div class="delete" (click)="removeSelf()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>

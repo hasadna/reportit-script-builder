@@ -80,32 +80,32 @@ export class WaitInputBlockComponent implements OnInit, OnDestroy {
 
   initValidation(): void {
     this.checkboxes.push({
-      label: 'מניעת משלוח הודעה ריקה',
+      label: 'Verify no empty answer',
       validation: BlockValidation.NoEmptyAnswer,
     });
     if (this.block.isWaitTextBlock()) {
       // Text validation only
       this.checkboxes.push({
-        label: 'וידוא כתובת דוא"ל תקינה',
+        label: "Verify it's a valid email address",
         validation: BlockValidation.EmailAddress,
       });
       this.checkboxes.push({
-        label: "וידוא מספר טלפון תקין",
+        label: "Verify it's a valid phone number",
         validation: BlockValidation.PhoneNumber,
       });
       this.checkboxes.push({
-        label: 'וידוא תשובה מספרית',
+        label: 'Verify it has only numbers',
         validation: BlockValidation.Number,
       });
     }
     if (this.block.isWaitDateBlock()) {
       // Date validation only
       this.checkboxes.push({
-        label: "וידוא תאריך תקין",
+        label: "Verify it's a valid date",
         validation: BlockValidation.Date,
       });
       this.checkboxes.push({
-        label: "וידוא שעה תקינה",
+        label: "Verify it's a valid hour",
         validation: BlockValidation.Hour,
       });
     }

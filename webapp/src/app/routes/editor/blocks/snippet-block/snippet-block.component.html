@@ -1,8 +1,9 @@
 <div class="component">
   <mat-card class="app-block">
+    <div class="anchor" #anchor></div>
     <div class="title">מקטע (Snippet)</div>
     <div class="arg text-field">
-      <div class="label">שם המקטע:</div>
+      <div class="label">שם:</div>
       <input [formControl]="input" *ngIf="!block.isDefault">
       <span class="static" *ngIf="block.isDefault">{{ block.name }}</span>
     </div>
@@ -10,10 +11,10 @@
       class="delete"
       (click)="removeSelf()"
       *ngIf="!block.isDefault"
-    ><mat-icon>מחיקה</mat-icon></div>
+    ><mat-icon>delete</mat-icon></div>
     <div class="scroll-links">
-      <div class="scroll-link" *ngFor="let gotoBlock of gotoBlockList">
-        <a (click)="scroll(gotoBlock)">קיימת הפניה לבלוק הזה ממקטע אחר בתסריט (goto)</a>
+      <div class="scroll-link" *ngFor="let source of sourceSnippets; let i=index;">
+        <a (click)="scroll(gotoBlockList[i])">חזרה ל-{{source}}</a>
       </div>
     </div>
     <div class="reorder">
