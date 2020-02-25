@@ -1,10 +1,10 @@
 <mat-card class="component app-block">
-  <div class="title">הצגת מסר (Say)</div>
+  <div class="title">הצגת הודעה (Say)</div>
   <div class="message text-field">
-    <div class="label">הודעה:</div>
+    <div class="label">תוכן:</div>
     <textarea autosize [(ngModel)]="block.say"></textarea>
   </div>
-  <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
+  <div class="delete" (click)="remove.emit()"><mat-icon>מחיקה</mat-icon></div>
   <div class="reorder">
     <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>
     <mat-icon (click)="down()">keyboard_arrow_down</mat-icon>
