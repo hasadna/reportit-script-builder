@@ -12,7 +12,7 @@
       *ngIf="!block.isDefault"
     ><mat-icon>מחיקה</mat-icon></div>
     <div class="scroll-links">
-      <div class="scroll-link" *ngFor="let gotoBlock of gotoBlockList">
+      <div class="scroll-link" *ngFor="let source of sourceSnippets; let i=index;"> 
         <a (click)="scroll(gotoBlock)">קיימת הפניה לבלוק הזה ממקטע אחר בתסריט (goto)</a>
       </div>
     </div>
