@@ -32,6 +32,7 @@ export class OrganizationBlockComponent {
   }
 
   addScenario(): void {
+    this.block.scenarios = this.block.scenarios || [];
     this.block.scenarios.unshift({ json: '{}' });
   }
 

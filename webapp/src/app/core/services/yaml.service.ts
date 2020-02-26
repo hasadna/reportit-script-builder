@@ -387,7 +387,6 @@ export class YamlService {
         organizationBlock.phoneNumber2 = organization.phoneNumber2;
         organizationBlock.phoneResponseDetails = organization.phoneResponseDetails;
         organizationBlock.receptionDetails = organization.receptionDetails;
-        organizationBlock.scenariosRelevancy = organization.scenariosRelevancy;
         organizationBlock.slug = organization.slug;
         organizationBlock.websiteLabel1 = organization.websiteLabel1;
         organizationBlock.websiteLabel2 = organization.websiteLabel2;
@@ -466,7 +465,6 @@ export class YamlService {
         phoneNumber2: organizationBlock.phoneNumber2,
         phoneResponseDetails: organizationBlock.phoneResponseDetails,
         receptionDetails: organizationBlock.receptionDetails,
-        scenariosRelevancy: organizationBlock.scenariosRelevancy,
         slug: organizationBlock.slug,
         websiteLabel1: organizationBlock.websiteLabel1,
         websiteLabel2: organizationBlock.websiteLabel2,
