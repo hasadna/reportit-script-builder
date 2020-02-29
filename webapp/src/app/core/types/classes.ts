@@ -146,7 +146,6 @@ export class OrganizationBlock extends Block {
   phoneNumber2: string;
   phoneResponseDetails: string;
   receptionDetails: string;
-  scenariosRelevancy: string;
   slug: string;
   websiteLabel1: string;
   websiteLabel2: string;
