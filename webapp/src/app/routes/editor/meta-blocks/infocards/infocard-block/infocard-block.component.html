@@ -5,12 +5,12 @@
     <input [(ngModel)]="block.title">
   </div>
   <div class="message text-field">
-    <div class="label">תוכן:</div>
-    <input [(ngModel)]="block.content">
-  </div>
-  <div class="message text-field">
     <div class="label">כינוי (Slug):</div>
     <input [(ngModel)]="block.slug">
+  </div>
+  <div class="message text-field">
+    <div class="label">תוכן:</div>
+    <textarea autosize [(ngModel)]="block.content"></textarea>
   </div>
   <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">
