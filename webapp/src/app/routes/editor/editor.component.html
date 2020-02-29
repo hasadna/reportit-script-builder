@@ -22,10 +22,22 @@
   <ng-container *ngIf="!blockService.isUserScript">
     <div class="hr-title">
       <div class="hr"></div>
-      <div class="title">מידע זמין</div>
+      <div class="title">כרטיסיות מידע</div>
     </div>
     <infocard-list></infocard-list>
-    <organization-list></organization-list>
-    <task-template-list></task-template-list>
   </ng-container>
+  <ng-container *ngIf="!blockService.isUserScript">
+      <div class="hr-title">
+        <div class="hr"></div>
+        <div class="title">ארגוני חברה אזרחית ויחידות ממשלה</div>
+      </div>
+      <organization-list></organization-list>
+  </ng-container>
+  <ng-container *ngIf="!blockService.isUserScript">
+    <div class="hr-title">
+      <div class="hr"></div>
+      <div class="title">תבניות משימות לביצוע</div>
+    </div>
+    <task-template-list></task-template-list>
+  </ng-container>  
 </div>

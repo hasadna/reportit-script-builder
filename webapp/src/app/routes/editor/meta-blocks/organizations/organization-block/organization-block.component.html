@@ -2,25 +2,49 @@
   <mat-card class="app-block">
     <div class="title">ארגון</div>
     <div class="message text-field">
-      <div class="label">איש קשר 1:</div>
-      <input [(ngModel)]="block.contactPerson1">
+      <div class="label">שם הארגון:</div>
+      <input [(ngModel)]="block.organizationName">
     </div>
     <div class="message text-field">
-      <div class="label">איש קשר 2:</div>
-      <input [(ngModel)]="block.contactPerson2">
+      <div class="label">כינוי (Slug):</div>
+      <input [(ngModel)]="block.slug">
     </div>
+    <div class="message text-field">
+      <div class="label">סוג הארגון:</div>
+      <input [(ngModel)]="block.organizationType">
+    </div>
+
     <div class="message text-field">
       <div class="label">תיאור:</div>
       <textarea autosize [(ngModel)]="block.description"></textarea>
+    </div>
+
+    <div class="message text-field">
+      <div class="label">מס' טלפון 1:</div>
+      <input [(ngModel)]="block.phoneNumber1">
     </div>
     <div class="message text-field">
       <div class="label">דוא"ל 1:</div>
       <input [(ngModel)]="block.email1">
     </div>
     <div class="message text-field">
+      <div class="label">שם איש/אשת הקשר (אם ישנם):</div>
+      <input [(ngModel)]="block.contactPerson1">
+    </div>
+
+    <div class="message text-field">
+      <div class="label">מס' טלפון 2:</div>
+      <input [(ngModel)]="block.phoneNumber2">
+    </div>  
+    <div class="message text-field">
       <div class="label">דוא"ל 2:</div>
       <input [(ngModel)]="block.email2">
     </div>
+    <div class="message text-field">
+      <div class="label">שם איש/אשת הקשר (אם ישנם):</div>
+      <input [(ngModel)]="block.contactPerson2">
+    </div>
+
     <div class="message text-field">
       <div class="label">פקס:</div>
       <input [(ngModel)]="block.fax">
@@ -29,51 +53,32 @@
       <div class="label">כתובת דואר רגיל:</div>
       <input [(ngModel)]="block.mailAddress">
     </div>
-    <div class="message text-field">
-      <div class="label">שם הארגון:</div>
-      <input [(ngModel)]="block.organizationName">
-    </div>
-    <div class="message text-field">
-      <div class="label">סוג הארגון:</div>
-      <input [(ngModel)]="block.organizationType">
-    </div>
-    <div class="message text-field">
-      <div class="label">מס' טלפון 1:</div>
-      <input [(ngModel)]="block.phoneNumber1">
-    </div>
-    <div class="message text-field">
-      <div class="label">מס' טלפון 2:</div>
-      <input [(ngModel)]="block.phoneNumber2">
-    </div>
+
     <div class="message text-field">
       <div class="label">פרטי מענה טלפוני:</div>
-      <input [(ngModel)]="block.phoneResponseDetails">
+      <textarea autosize [(ngModel)]="block.phoneResponseDetails"></textarea>
     </div>
     <div class="message text-field">
       <div class="label">פרטי קבלת קהל:</div>
-      <input [(ngModel)]="block.receptionDetails">
+      <textarea autosize [(ngModel)]="block.receptionDetails"></textarea>
     </div>
     <div class="message text-field">
-      <div class="label">כינוי (Slug):</div>
-      <input [(ngModel)]="block.slug">
-    </div>
-    <div class="message text-field">
-      <div class="label">תגית כתובת אתר 1:</div>
+      <div class="label">שם/תיאור כתובת אתר 1:</div>
       <input [(ngModel)]="block.websiteLabel1">
-    </div>
-    <div class="message text-field">
-      <div class="label">תגית כתובת אתר 2:</div>
-      <input [(ngModel)]="block.websiteLabel2">
     </div>
     <div class="message text-field">
       <div class="label">כתובת אתר 1:</div>
       <input [(ngModel)]="block.websiteUrl1">
     </div>
     <div class="message text-field">
+      <div class="label">שם/תיאור כתובת אתר 2:</div>
+      <input [(ngModel)]="block.websiteLabel2">
+    </div>
+    <div class="message text-field">
       <div class="label">כתובת אתר 2:</div>
       <input [(ngModel)]="block.websiteUrl2">
     </div>
-    <button mat-flat-button color="primary" (click)="addScenario()">הוספת תסריט שימוש</button>
+    <button mat-flat-button color="primary" (click)="addScenario()">הוספת תרחישי שימוש</button>
     <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
     <div class="reorder">
       <mat-icon (click)="up()">keyboard_arrow_up</mat-icon>

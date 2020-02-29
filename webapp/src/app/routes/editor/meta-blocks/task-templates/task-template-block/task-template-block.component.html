@@ -5,16 +5,16 @@
     <input [(ngModel)]="block.title">
   </div>
   <div class="message text-field">
+    <div class="label">כינוי (Slug):</div>
+    <input [(ngModel)]="block.slug">
+  </div>
+  <div class="message text-field">
     <div class="label">תיאור:</div>
     <textarea autosize [(ngModel)]="block.description"></textarea>
   </div>
   <div class="message text-field">
     <div class="label">כרטיסיות מידע מקושרות (Slugs):</div>
     <input [(ngModel)]="block.infocardSlugs">
-  </div>
-  <div class="message text-field">
-    <div class="label">כינוי (Slug):</div>
-    <input [(ngModel)]="block.slug">
   </div>
   <div class="delete" (click)="remove.emit()"><mat-icon>delete</mat-icon></div>
   <div class="reorder">

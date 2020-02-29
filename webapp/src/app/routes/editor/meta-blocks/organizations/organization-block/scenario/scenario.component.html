@@ -1,7 +1,13 @@
 <mat-card class="app-block">
-  <div class="title">Scenario</div>
+  <div class="title">תרחיש</div>
   <div class="name text-field">
-    <div class="label">json:</div>
+    <div class="label">
+        * הזינו את תרחישי השימוש הרלוונטים לארגון, לאיתור אוטומטי<br>
+        * השאירו ריק אם הארגון רלוונטי לכל סוגי הפניות<br>
+        * הזינו `{{ '{' }}"run":"never" {{ '}'}}` כדי לא לכלול את הארגון באיתור אוטומטי של ארגונים<br>
+        ----<br>
+        json:
+    </div>
     <textarea autosize [formControl]="textarea"></textarea>
   </div>
   <div class="error" *ngIf="isError">
