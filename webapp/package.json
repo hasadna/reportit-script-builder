@@ -11,7 +11,7 @@
     "deploy": "npm run build && firebase deploy --only hosting"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.22",
+    "@angular-devkit/build-angular": "~15.0.0",
     "@angular/animations": "~8.2.3",
     "@angular/cdk": "~8.1.4",
     "@angular/cli": "~8.3.1",
